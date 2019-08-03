@@ -19,7 +19,7 @@ public class Patient extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ddoctor);
+        setContentView(R.layout.activity_doctor);
         patientList = findViewById(R.id.doctorList);
 
         Patient.MyAdapter adapter = new Patient.MyAdapter(this,names);

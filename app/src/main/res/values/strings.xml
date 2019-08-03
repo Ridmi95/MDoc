@@ -39,6 +39,7 @@
     <string name="hintSpecialization2">Type your specialization here (2)</string>
     <string name="txtQual">Qualifications</string>
     <string name="txtSpe">Specializations</string>
+    <string name="title_activity_list_of_doc">List of Doctors</string>
 
 
 
@@ -69,4 +70,27 @@
     <string name="registered_patient">Registered Patient</string>
     <string name="no_of_registered_patient">no of registered patient</string>
     <string name="new_specialization">New Specialization</string>
+    <string name="appointment">Appointment</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="mobile">mobile</string>
+    <string name="problems">Problems</string>
+    <string name="date">Date</string>
+    <string name="submit">Submit</string>
+    <string name="update">Update</string>
+    <string name="list_of_doctors">List Of Doctors</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="my_profile">My Profile</string>
+    <string name="lab_report">Lab Report</string>
+    <string name="view_report">View Report</string>
+    <string name="add_appointment">Add Appointment</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="user_name">User Name</string>
+
 </resources>

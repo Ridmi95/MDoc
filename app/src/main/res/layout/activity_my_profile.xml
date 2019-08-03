@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/my_profile"
             android:textSize="@dimen/profiletexttestsize"
-            android:textColor="@color/colortextIcon"
+            android:textColor="@color/textIcon"
             android:textAlignment="center"
             android:paddingTop="@dimen/profiletextviewpaddingtop"
             android:paddingBottom="@dimen/pfofiletextpaddingbot"
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="7"
-            android:hint="@string/full_name"
+            android:hint="@string/hintFName"
             android:inputType="text"
             android:textSize="@dimen/profilefullnametextsize"
             android:layout_marginStart="@dimen/profilefullnamemarginstart"
@@ -72,7 +72,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/lastname"
+            android:hint="@string/hintLName"
             android:ems="7"
             android:inputType="text"
             android:textSize="@dimen/profilelastnametestsize"
@@ -133,7 +133,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Gender"
+            android:text="@string/gender"
             android:textSize="@dimen/Rtextsize"
             android:layout_marginTop="@dimen/Gmargin"/>
 
@@ -183,8 +183,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
         android:background="@drawable/button_rounded"
-        android:text="@string/Update2"
-        android:textColor="@color/colortextIcon"
+        android:text="@string/update"
+        android:textColor="@color/textIcon"
         android:textSize="@dimen/Btextsize"
         android:layout_marginTop="@dimen/profileudatemargintop"
 
@@ -196,8 +196,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
         android:background="@drawable/button_rounded"
-        android:text="@string/deletAcc"
-        android:textColor="@color/colortextIcon"
+        android:text="@string/delete_account"
+        android:textColor="@color/textIcon"
         android:textSize="@dimen/Btextsize"
         android:layout_marginTop="@dimen/profiledeletemargintop"
         android:layout_marginStart="@dimen/profiledeletemastart"
