@@ -11,7 +11,7 @@
         android:id="@+id/Profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorDarkPrimary"
+        android:background="@color/colorPrimaryDark"
         android:paddingTop="@dimen/apptetptop"
         android:paddingBottom="@dimen/apptextpb"
         android:text="@string/appoinments"
