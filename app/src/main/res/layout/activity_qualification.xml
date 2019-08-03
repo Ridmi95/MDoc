@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QualificationActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:background="@color/colorPrimaryLight"
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/btnpaddingl"
+        android:text="@string/profile"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:textSize="25dp"
+        android:paddingTop="@dimen/paddingTop"
+        android:paddingBottom="@dimen/paddingBottom"/>
+
+
+    <TextView
+        android:paddingTop="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtQual"
+        android:textSize="@dimen/txtsize"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:paddingTop="@dimen/paddingTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/hintQualifications1"/>
+
+    <EditText
+        android:paddingTop="@dimen/paddingTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/hintQualifications2"/>
+
+    <TextView
+        android:paddingTop="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtSpe"
+        android:textSize="@dimen/txtsize"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:paddingTop="@dimen/paddingTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/hintSpecialization1"/>
+
+    <EditText
+        android:paddingTop="@dimen/paddingTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/hintSpecialization2"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/paddingLeft"
+        android:layout_marginLeft="@dimen/btnmarginleftRight"
+        android:layout_marginRight="@dimen/btnmarginleftRight"
+        android:background="@drawable/rounded_btn"
+        android:text="@string/btnSave"
+        android:drawableLeft="@drawable/ic_save_black_24dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/txtsize"/>
+
+</LinearLayout>
