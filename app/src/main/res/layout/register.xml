@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colortextIcon"
+    android:orientation="vertical"
+    android:padding="@dimen/lpadding"
+    tools:context=".register">
+
+    <TextView
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="@dimen/regtextsize"
+        android:paddingTop="@dimen/regtextpaddingtop"
+        android:paddingBottom="@dimen/regtestpaddingBottom"
+        android:layout_marginRight="@dimen/regtextmarginRight"
+        android:layout_marginLeft="@dimen/regtextmarginLeft"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/FNmarginTop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/full_name"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="20sp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/LNmargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lastname"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/reglntextsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/EmarginTop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/regemailtestsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/MmarginTop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mobile"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/regmobiletextsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/PmarginTop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/regpasswordtextsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/CPmarginTop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/regconpwtextsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/RmarginTop">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Gender"
+            android:textSize="@dimen/Rtextsize"
+            android:layout_marginTop="@dimen/Gmargin"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/Rmarginleft1"
+            android:text="@string/male"
+            android:layout_marginTop="@dimen/RBmargin"
+            android:textSize="@dimen/RtextSize" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/RmarginLeft"
+            android:layout_marginTop="@dimen/RBFmargin"
+            android:text="@string/female"
+
+            android:textSize="@dimen/RtextSize" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:background="@drawable/button_rounded"
+        android:text="@string/register"
+        android:textColor="@color/colortextIcon"
+        android:textSize="@dimen/Btextsize"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+

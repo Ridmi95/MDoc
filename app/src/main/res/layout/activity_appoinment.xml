@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Appoinment">
+
+    <TextView
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorDarkPrimary"
+        android:paddingTop="@dimen/apptetptop"
+        android:paddingBottom="@dimen/apptextpb"
+        android:text="@string/appoinments"
+        android:textAlignment="center"
+        android:textColor="@color/colortextIcon"
+        android:textSize="@dimen/apptexttest"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <com.google.android.material.textfield.Spinner
+        android:id="@+id/docname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/appdocnmtop"
+        android:focusable="true"
+        android:layout_marginStart="@dimen/appmas1"
+        android:layout_marginEnd="@dimen/appmare1"
+
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:hint="@string/doctor_name"
+            android:inputType="text"
+            android:textSize="@dimen/appdocntextsize" />
+    </com.google.android.material.textfield.Spinner>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="@dimen/appdocnmtopName"
+        android:layout_marginStart="@dimen/appnamems"
+        android:layout_marginEnd="@dimen/appnamemarend"
+
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:textSize="@dimen/appnametestsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginStart="@dimen/appemailmars"
+        android:layout_marginEnd="@dimen/appemailmarend"
+
+        android:layout_marginTop="@dimen/EmarginTop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/appemailtestsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginStart="@dimen/appemailmarginstart"
+        android:layout_marginEnd="@dimen/appemailmarginend"
+        android:layout_marginTop="@dimen/appemailmargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mobile"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/appmobiletestsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginStart="@dimen/appproblemsmartop"
+        android:layout_marginEnd="@dimen/appproblemsmars"
+        android:layout_marginTop="@dimen/appproblemsmargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/problems"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/appproblemtestsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginStart="@dimen/appdatemarginstrat"
+        android:layout_marginEnd="@dimen/appdatemarginend"
+        android:layout_marginTop="@dimen/appdatemargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/date"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/appdatetextsize"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:background="@drawable/button_rounded"
+        android:text="@string/submit"
+        android:textColor="@color/colortextIcon"
+        android:textSize="@dimen/Btextsize"
+        android:layout_marginTop="@dimen/appsubmitmargintop"
+        android:layout_marginStart="@dimen/appsubmitmarginstart"
+        android:layout_marginEnd="@dimen/appsubmitmarginend"
+        android:onClick="view"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:background="@drawable/button_rounded"
+        android:text="@string/Update1"
+        android:textColor="@color/colortextIcon"
+        android:textSize="@dimen/Btextsize"
+        android:layout_marginTop="@dimen/appupdatemargintop"
+        android:layout_marginStart="@dimen/appupdatemarginstart"
+        android:layout_marginEnd="@dimen/appupdatemarginend"/>
+</LinearLayout>

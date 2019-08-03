@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">MDoc</string>
+    <string name="full_name">Full Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <string name="Gender">Gender :</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="loginemail">Email</string>
+    <string name="login">Login</string>
+    <string name="btnapp" />
+
+    <string name="lab_report_view">Lab Report View</string>
+    <string name="view_lab_report">View Lab Report</string>
+
+
+    <string name="deletAcc">Delete Account</string>
+    <string name="frist_name">Frist Name</string>
+    <string name="view_report">View Report</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_list_of_doc">listOfDoc</string>
+    <string name="title_activity_navigation_m_doc">navigation_mDoc</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="name">Name</string>
+    <string name="problems">Problems</string>
+    <string name="date">Date</string>
+
+    <string name="submit">Submit</string>
+
+    <string name="my_profile">My Profile</string>
+    <string name="register">Register</string>
+    <string name="add_appoinment">Add Appoinment</string>
+
+    <string name="lab_report">Lab Report</string>
+    <string name="appoinments">Appoinments</string>
+    <string name="Update1">Update</string>
+    <string name="LisiOfDoc">list_of_doctors</string>
+    <string name="Update2">update</string>
+    <string name="list_of_doctors1">List Of Doctors</string>
+</resources>

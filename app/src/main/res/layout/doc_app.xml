@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".doc_app">
+
+
+
+
+    <TextView
+        android:id="@+id/textLabR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Appoinment"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/colortextIcon"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="20dp"
+        android:paddingTop="@dimen/textmarlab"
+        android:paddingBottom="@dimen/textpadblab"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/app"
+        android:padding="@dimen/logingpadding"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="add"
+        android:src="@color/colorPrimaryDark"
+        android:text="@string/list_of_doctors1"
+        android:textColor="@color/colortextIcon"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/docappmargingstart"
+        android:layout_marginEnd="@dimen/docapplistmarginend"
+        android:layout_marginTop="@dimen/docapplistofdocmarrgintop"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="add"
+        android:src="@color/colorPrimaryDark"
+        android:text="@string/add_appoinment"
+        android:textColor="@color/colortextIcon"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/docappaddappoinmentmarginstart"
+        android:layout_marginEnd="@dimen/docappaddappomargingend"
+        android:layout_marginTop="@dimen/docappaddappoinmentmargintop"/>
+
+</LinearLayout>

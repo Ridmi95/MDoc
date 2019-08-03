@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".myProfile">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark"
+        >
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/my_profile"
+            android:textSize="@dimen/profiletexttestsize"
+            android:textColor="@color/colortextIcon"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/profiletextviewpaddingtop"
+            android:paddingBottom="@dimen/pfofiletextpaddingbot"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/profiletextmargintop"
+
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/person"
+        android:padding="@dimen/profileimagepadding"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="0dp"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:hint="@string/full_name"
+            android:inputType="text"
+            android:textSize="@dimen/profilefullnametextsize"
+            android:layout_marginStart="@dimen/profilefullnamemarginstart"
+            android:layout_marginEnd="@dimen/profilefullnamemarginend"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="@dimen/profilelastnamemargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lastname"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/profilelastnametestsize"
+            android:layout_marginStart="@dimen/profilemarginstartln"
+            android:layout_marginEnd="@dimen/profilelnmarginend"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="@dimen/profileemailmargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/profileemailtestsize"
+            android:layout_marginStart="@dimen/profileemailmarginstart"
+            android:layout_marginEnd="@dimen/profileemailmarginend"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="@dimen/profilemobilemargintop"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mobile"
+            android:ems="7"
+            android:inputType="text"
+            android:textSize="@dimen/profilemobiletextsize"
+            android:layout_marginStart="@dimen/profilemobilemarginstart"
+            android:layout_marginEnd="@dimen/profilemobilemarginend"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/profgendermargintop"
+        android:layout_marginStart="@dimen/profilegendermarginstart"
+        android:layout_marginEnd="@dimen/profilegendermarginend">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Gender"
+            android:textSize="@dimen/Rtextsize"
+            android:layout_marginTop="@dimen/Gmargin"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/Rmarginleft1"
+            android:text="@string/male"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="@dimen/RBmargin"
+            android:textSize="@dimen/RtextSize" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/RmarginLeft"
+            android:layout_marginTop="@dimen/RBFmargin"
+            android:layout_marginRight="5dp"
+            android:text="@string/female"
+
+            android:textSize="@dimen/RtextSize" />
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="1dp"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:ems="7"
+            android:inputType="text"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="20sp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:background="@drawable/button_rounded"
+        android:text="@string/Update2"
+        android:textColor="@color/colortextIcon"
+        android:textSize="@dimen/Btextsize"
+        android:layout_marginTop="@dimen/profileudatemargintop"
+
+        android:layout_marginStart="@dimen/profileupdatemarginstart"
+        android:layout_marginEnd="@dimen/profieupdatemarginend"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:background="@drawable/button_rounded"
+        android:text="@string/deletAcc"
+        android:textColor="@color/colortextIcon"
+        android:textSize="@dimen/Btextsize"
+        android:layout_marginTop="@dimen/profiledeletemargintop"
+        android:layout_marginStart="@dimen/profiledeletemastart"
+        android:layout_marginEnd="@dimen/profiledeletemaginend"/>
+
+
+</LinearLayout>
