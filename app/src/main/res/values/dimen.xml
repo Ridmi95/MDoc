@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingLeft">30dp</dimen>
+    <dimen name="paddingRight">30dp</dimen>
+    <dimen name="paddingBottom">10dp</dimen>
+    <dimen name="paddingTop">10dp</dimen>
+    <dimen name="btnpaddingr">20dp</dimen>
+    <dimen name="btnpaddingl">20dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="btntop">30dp</dimen>
+    <dimen name="btnbottom">30dp</dimen>
+    <dimen name="txtsize">20dp</dimen>
+    <dimen name="btnmarginleftRight">100dp</dimen>
+
+</resources>
