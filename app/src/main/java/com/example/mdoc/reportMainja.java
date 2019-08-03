@@ -32,7 +32,7 @@ public class reportMainja extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(reportMainja.this, com.example.myapplication5.view.class);
+                Intent intent = new Intent(reportMainja.this, com.example.mdoc.view.class);
                 startActivity(intent);
             }
         });
