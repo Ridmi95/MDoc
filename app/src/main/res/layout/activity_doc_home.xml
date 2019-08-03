@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10sp"
+    tools:context=".DocHomeActivity">
+
+    <TextView
+        android:id="@+id/welcomeMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/btnpaddingl"
+        android:text="Welcome Dr.Nishiki"
+        android:textAlignment="center"
+        android:textColor="@color/textPrimary"
+        android:textSize="25dp" />
+
+    <!--button 1-->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/btntop"
+    android:layout_marginBottom="@dimen/btnbottom">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="5"
+        android:src="@drawable/patient"
+        android:contentDescription="@string/btnPatients"/>
+
+    <Button
+        android:onClick="myPatients"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_btn"
+        android:text="@string/btnPatients"
+        android:textColor="@color/textIcon"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
+
+    <!--button 2-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/btntop"
+        android:layout_marginBottom="@dimen/btnbottom">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="5"
+            android:src="@drawable/hospital"
+            android:contentDescription="@string/btnPlace"/>
+
+        <Button
+            android:onClick="myPlaces"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:text="@string/btnPlace"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_btn"
+            android:textColor="@color/textIcon"/>
+
+    </LinearLayout>
+
+    <!--button 3-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/btntop"
+        android:layout_marginBottom="@dimen/btnbottom">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="5"
+            android:src="@drawable/profile"
+            android:contentDescription="@string/btnProfile"/>
+
+        <Button
+            android:onClick="profile"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/btnProfile"
+            android:background="@drawable/rounded_btn"
+            android:textColor="@color/textIcon"/>
+
+    </LinearLayout>
+
+        </LinearLayout>
