@@ -14,16 +14,16 @@ public class view extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.reportmainview);
-//
-//        back = findViewById(R.id.bckbtn);
-//
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(com.example.myapplication5.view.this, reportMainja.class);
-//                startActivity(intent);
-//            }
-//        });
+        setContentView(R.layout.reportmainview);
+
+        back = findViewById(R.id.bckbtn);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(com.example.myapplication5.view.this, reportMainja.class);
+                startActivity(intent);
+            }
+        });
     }
 }
