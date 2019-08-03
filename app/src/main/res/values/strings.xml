@@ -39,4 +39,34 @@
     <string name="hintSpecialization2">Type your specialization here (2)</string>
     <string name="txtQual">Qualifications</string>
     <string name="txtSpe">Specializations</string>
+
+
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Admin</string>
+    <string name="nav_header_subtitle">Admin123@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="admindashboard">ADMIN DASH BOARD</string>
+    <string name="pending">Pending</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="add_specialization">ADD SPECIALIZATION</string>
+    <string name="specialization_name">Specialization Name</string>
+    <string name="description">Description</string>
+    <string name="pending_doctors">Pending Doctors</string>
+    <string name="no_registered_doctors">250</string>
+    <string name="registered_doctors">Registered Doctors</string>
+    <string name="registered_patient">Registered Patient</string>
+    <string name="no_of_registered_patient">no of registered patient</string>
+    <string name="new_specialization">New Specialization</string>
 </resources>
