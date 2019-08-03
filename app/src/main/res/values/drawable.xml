@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="patient" type="drawable">patient</item>
+    <item name="hospital" type="drawable">hospital</item>
+    <item name="profile" type="drawable">profile</item>
+</resources>
