@@ -14,9 +14,9 @@ public class search extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.reportsearchmain);
+        setContentView(R.layout.reportsearchmain);
 
-      //  back = findViewById(R.id.bckbtn);
+        back = findViewById(R.id.bckbtn);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

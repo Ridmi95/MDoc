@@ -36,11 +36,10 @@ public class Specialization extends AppCompatActivity {
 
         Spinner sItems1 = findViewById(R.id.categoryspinner);
         sItems1.setPrompt("Select Category");
-        Spinner sItems2 = findViewById(R.id.departmentSpinner);
-
-        sItems2.setPrompt("Select Department");
+        //
+        //sItems2.setPrompt("Select Department");
         sItems1.setAdapter(categoryadapter);
-        sItems2.setAdapter(departmentadapter);
+        //sItems2.setAdapter(departmentadapter);
 
     }
 }

@@ -44,11 +44,10 @@
             android:id="@+id/userpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
             android:ems="7"
-            android:inputType="text"
-            android:textSize="@dimen/loginpasswordtextsize"
-            />
+            android:hint="@string/password"
+            android:inputType="text|textPassword"
+            android:textSize="@dimen/loginpasswordtextsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

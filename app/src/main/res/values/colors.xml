@@ -8,5 +8,5 @@
     <color name="textPrimary">#212121</color>
     <color name="textSecondary">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
-    <color name="colorHomeTExt">#FFFFFF</color>
+    <color name="dashIconColor">#70BCFC</color>
 </resources>

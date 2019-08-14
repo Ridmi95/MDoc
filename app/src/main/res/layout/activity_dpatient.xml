@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/dashIconColor"
                     android:src="@drawable/icondoctor2" />
 
 
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/dashIconColor"
                     android:src="@drawable/iconpatient2"
 
                     />
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/dashIconColor"
                     android:src="@drawable/iconpending2"
 
                     />
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/dashIconColor"
                     android:src="@drawable/iconadd2"
 
                     />

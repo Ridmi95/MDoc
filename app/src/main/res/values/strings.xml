@@ -42,9 +42,6 @@
     <string name="title_activity_list_of_doc">List of Doctors</string>
 
 
-
-
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Admin</string>
@@ -68,7 +65,7 @@
     <string name="no_registered_doctors">250</string>
     <string name="registered_doctors">Registered Doctors</string>
     <string name="registered_patient">Registered Patient</string>
-    <string name="no_of_registered_patient">no of registered patient</string>
+    <string name="no_of_registered_patient">1500</string>
     <string name="new_specialization">New Specialization</string>
     <string name="appointment">Appointment</string>
     <string name="name">Name</string>
@@ -92,5 +89,17 @@
     <string name="female">Female</string>
     <string name="delete_account">Delete Account</string>
     <string name="user_name">User Name</string>
+    <string name="title_activity_main_home">MainHome</string>
+    <string name="account">Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="doctor_register">Doctor Register</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customeremail_23_com">CustomerEmail@23.com</string>
+    <string name="make_appointment">Make Appointment</string>
+    <string name="home">HOME</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="doctor_home">Doctor Home</string>
 
 </resources>

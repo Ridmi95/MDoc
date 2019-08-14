@@ -182,9 +182,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@android:string/search_go"
+        app:layout_constraintBottom_toBottomOf="@+id/bckbtn2"
         app:layout_constraintEnd_toEndOf="@+id/bckbtn2"
-        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="@+id/bckbtn2"
-        tools:layout_editor_absoluteY="176dp" />
+        app:layout_constraintTop_toTopOf="@+id/bckbtn2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

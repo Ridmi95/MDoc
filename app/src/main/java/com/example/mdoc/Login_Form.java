@@ -26,27 +26,35 @@ public class Login_Form extends AppCompatActivity {
         String uname,upass;
         Intent intent;
 
-      //  uname = username.getText().toString();
-      //  upass = password.getText().toString();
+        uname = username.getText().toString();
+        upass = password.getText().toString();
 
-       // if(uname.equals("admin") && upass.equals("admin"))
-      //  {
+        if(uname.equals("admin") && upass.equals("admin"))
+        {
 
             intent = new Intent(Login_Form.this, MainNavigationActivity.class);
             startActivity(intent);
 
-      //  }else if(uname.equals("customer") && upass.equals("customer"))
-//        {
-//            intent = new Intent(this, register.class);
-//            startActivity(intent);
-//        }
+        }else if(uname.equals("customer") && upass.equals("customer"))
+        {
+            intent = new Intent(this, MainHome.class);
+            startActivity(intent);
+        }else if(uname.equals("lab") && upass.equals("lab"))
+        {
+            intent = new Intent(this, reportMainja.class);
+            startActivity(intent);
+        }else if(uname.equals("doctor") && upass.equals("doctor"))
+        {
+            intent = new Intent(this, DocHomeActivity.class);
+            startActivity(intent);
+        }
 
 
 
     }
 
     public void signup(View view) {
-        Intent intent = new Intent(this,myProfile.class);
+        Intent intent = new Intent(this,register.class);
         startActivity(intent);
     }
 }

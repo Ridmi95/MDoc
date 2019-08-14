@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_customer_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/myAccount"
+            android:icon="@drawable/ic_account_admin"
+            android:title="@string/account" />
+        <item
+            android:id="@+id/nav_customer_report"
+            android:icon="@drawable/ic_report"
+            android:title="Lab Reports" />
+        <item
+            android:id="@+id/nav_doctor_home"
+            android:icon="@drawable/ic_doctorregister"
+            android:title="@string/doctor_home" />
+    </group>
+
+    <item android:title="Other ">
+        <menu>
+            <item
+                android:id="@+id/nav_customer_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/log_out" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_send" />
+        </menu>
+    </item>
+
+</menu>

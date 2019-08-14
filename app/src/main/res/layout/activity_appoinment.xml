@@ -121,7 +121,6 @@
             android:textSize="@dimen/appproblemtestsize"
             />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -140,9 +139,11 @@
             android:ems="7"
             android:inputType="text"
             android:textSize="@dimen/appdatetextsize"
-            android:onClick="press"
+
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
     <Button
@@ -157,14 +158,27 @@
         android:layout_marginEnd="@dimen/appsubmitmarginend"
         android:onClick="view"/>
 
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
         android:background="@drawable/button_rounded"
-        android:text="@string/update"
+        android:text="Update"
         android:textColor="@color/textIcon"
         android:textSize="@dimen/Btextsize"
         android:layout_marginTop="@dimen/appupdatemargintop"
         android:layout_marginStart="@dimen/appupdatemarginstart"
         android:layout_marginEnd="@dimen/appupdatemarginend"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Bheight"
+            android:layout_marginStart="@dimen/appupdatemarginstart"
+            android:layout_marginTop="@dimen/appupdatemargintop"
+            android:layout_marginEnd="@dimen/appupdatemarginend"
+            android:background="@drawable/button_rounded"
+            android:text="Cancel"
+            android:textColor="@color/textIcon"
+            android:textSize="@dimen/Btextsize" />
+
 </LinearLayout>
