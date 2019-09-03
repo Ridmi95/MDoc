@@ -1,19 +1,17 @@
 package com.example.mdoc;
 
+import android.provider.BaseColumns;
+
 public final class DatabaseContract {
-    /* this is the database contract class
-       here we design all the tables necessary to create the database
-       version and database name is define at the beginning of the class
-       use inner classes to create the necessary tables
-    */
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "MDoc.db";
-
-    // To prevent someone from accidentally instantiating the contract class,
-    // give it an empty constructor.
     private DatabaseContract() {}
 
-
+    public static class Specialization implements BaseColumns
+    {
+        public static String TABLE_NAME = "Specialization";
+        public static String SPECIALIZATION_NAME = "Name";
+        public static String SPECIALIZATION_DEPARTMENT = "Department";
+        public static String SPECIALIZATION_DESCRIPTION = "Description";
+    }
 
 }
