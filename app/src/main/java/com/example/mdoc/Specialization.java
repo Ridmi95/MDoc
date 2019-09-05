@@ -44,7 +44,7 @@ public class Specialization extends AppCompatActivity {
         category.add("dental");
         category.add("Eye");
         category.add("OPD");
-        category.add("Orthopendic");
+        category.add("Orthopedic");
         category.add("Physio");
         department.add("Dental");
         department.add("Eye");
@@ -63,7 +63,7 @@ public class Specialization extends AppCompatActivity {
         sItems1.setAdapter(categoryadapter);
 
 
-
+        //Adding New Specialization to the database
         addNewSpecialization.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,12 +79,17 @@ public class Specialization extends AppCompatActivity {
                     toast.show();
                 }
                 else {
-
-                    specialization.setSpecializationName(specializationName.getText().toString().trim());
-                    specialization.setSpecializationDepartment(departmentSpinner.getSelectedItem().toString().trim());
-                    specialization.setSpecializationDescription(specializationDescription.getText().toString().trim());
-                    specialization.setId(Integer.parseInt(specialKey.getText().toString().trim()));
-
+                    //checking for valid format
+                    try {
+                        specialization.setSpecializationName(specializationName.getText().toString().trim());
+                        specialization.setSpecializationDepartment(departmentSpinner.getSelectedItem().toString().trim());
+                        specialization.setSpecializationDescription(specializationDescription.getText().toString().trim());
+                        specialization.setId(Integer.parseInt(specialKey.getText().toString().trim()));
+                    }catch (NumberFormatException ex)
+                    {
+                        toast = Toast.makeText(getApplicationContext(),"Invalid Format",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                     //checking wheather the specialization is already exist in the database
                     if(dBconnection.checkSpecializationExist(specialization.getSpecializationName()) > 0)
                     {
@@ -112,6 +117,7 @@ public class Specialization extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Specialization.this,AdminViewSpecialization.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -126,21 +132,35 @@ public class Specialization extends AppCompatActivity {
 
             //updating the specialization
             addNewSpecialization.setOnClickListener(new View.OnClickListener() {
+                Toast toast;
                 @Override
                 public void onClick(View view) {
+                    try {
                     updateSpecialization.setSpecializationName(specializationName.getText().toString().trim());
                     updateSpecialization.setId(Integer.parseInt(specialKey.getText().toString().trim()));
                     updateSpecialization.setSpecializationDepartment(departmentSpinner.getSelectedItem().toString().trim());
                     Log.i("Update Name", updateSpecialization.getSpecializationName());
                     Log.i("Position",String.valueOf(listPosition));
-                    if(dBconnection.updateSpecialization(updateSpecialization) > 0)
+                        if(dBconnection.checkSpecializationExist(updateSpecialization.getSpecializationName()) > 0)
+                        {
+                            toast = Toast.makeText(getApplicationContext(), "Specialization Already Exits", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else {
+                            if (dBconnection.updateSpecialization(updateSpecialization) > 0) {
+                                toast = Toast.makeText(getApplicationContext(), "Successfully Updates", Toast.LENGTH_LONG);
+                                toast.show();
+                                Intent intent = new Intent(Specialization.this, AdminViewSpecialization.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                toast = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        }
+                    }catch (NumberFormatException ex)
                     {
-                        Toast toast = Toast.makeText(getApplicationContext(),"Successfully Updates",Toast.LENGTH_LONG);
-                        toast.show();
-                        Intent intent = new Intent(Specialization.this,AdminViewSpecialization.class);
-                        startActivity(intent);
-                    }else {
-                        Toast toast = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG);
+                        toast = Toast.makeText(getApplicationContext(),"Please Enter a Value of Special Key",Toast.LENGTH_SHORT);
                         toast.show();
                     }
 
@@ -149,20 +169,28 @@ public class Specialization extends AppCompatActivity {
 
             //deleting the user
             viewSpecialization.setOnClickListener(new View.OnClickListener() {
+                Toast toast;
                 @Override
                 public void onClick(View view) {
                     Log.i("Position",String.valueOf(listPosition));
-                    deleteSpecialization.setId(Integer.parseInt(specialKey.getText().toString().trim()));
+                    try {
+                        deleteSpecialization.setId(Integer.parseInt(specialKey.getText().toString().trim()));
 
-                    if(dBconnection.deleteSpecialization(deleteSpecialization) > 0)
+                        if (dBconnection.deleteSpecialization(deleteSpecialization) > 0) {
+
+                            toast = Toast.makeText(getApplicationContext(), "Successfully Delete", Toast.LENGTH_LONG);
+                            toast.show();
+
+                            Intent intent = new Intent(Specialization.this, AdminViewSpecialization.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            toast = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    }catch (NumberFormatException ex)
                     {
-                        Toast toast = Toast.makeText(getApplicationContext(),"Successfully Delete",Toast.LENGTH_LONG);
-                        toast.show();
-                        Intent intent = new Intent(Specialization.this,AdminViewSpecialization.class);
-                        startActivity(intent);
-                    }else
-                    {
-                        Toast toast = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG);
+                        toast = Toast.makeText(getApplicationContext(),"Please Enter a Value of Special Key",Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }
