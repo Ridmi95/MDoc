@@ -14,6 +14,13 @@ public class DaoSpecialization {
         this.specializationName = specializationName;
     }
 
+    public DaoSpecialization(int id, String specializationName, String specializationDepartment, String specializationDescription) {
+        this.id = id;
+        this.specializationName = specializationName;
+        this.specializationDepartment = specializationDepartment;
+        this.specializationDescription = specializationDescription;
+    }
+
     public int getId() {
         return id;
     }
