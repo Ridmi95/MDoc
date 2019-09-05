@@ -9,22 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AdminViewSpecialization"></activity>
         <activity
             android:name=".MainHome"
             android:label="@string/title_activity_main_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".myProfile" />
-
-        <activity android:name=".search"></activity>
+        <activity android:name=".search" />
         <activity android:name=".view" />
-        <activity android:name=".reportMainja"/>
-        <activity android:name=".DoctorMainActivity"/>
+        <activity android:name=".reportMainja" />
+        <activity android:name=".DoctorMainActivity" />
         <activity android:name=".DocHomeActivity" />
         <activity
             android:name=".MyPatientsActivity"
             android:label="@string/title_activity_my_patients"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".MyPlacesOfPractice"
             android:label="@string/title_activity_my_places_of_practice"
@@ -32,8 +31,7 @@
         <activity android:name=".AddPlaces" />
         <activity android:name=".AddConsultationHours" />
         <activity android:name=".DocProfile" />
-        <activity android:name=".QualificationActivity"></activity>
-
+        <activity android:name=".QualificationActivity" />
         <activity android:name=".Appoinment" />
         <activity android:name=".Specialization" />
         <activity android:name=".Patient" />

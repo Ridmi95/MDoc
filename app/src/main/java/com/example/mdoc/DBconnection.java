@@ -2,13 +2,17 @@ package com.example.mdoc;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBconnection extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mDoc.db";
-    public DBconnection(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBconnection(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
@@ -30,7 +34,7 @@ public class DBconnection extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Specialization.TABLE_NAME);
     }
 
-    public long addNewSpecialization(DaoSpeciliazation specialization)
+    public long addNewSpecialization(DaoSpecialization specialization)
     {
         SQLiteDatabase sd = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -43,6 +47,32 @@ public class DBconnection extends SQLiteOpenHelper {
         return result;
 
     }
+
+    public List<DaoSpecialization> getAllSpecialization()
+    {
+        DaoSpecialization specialization = new DaoSpecialization();
+        SQLiteDatabase sd= getReadableDatabase();
+        String[] projection = {DatabaseContract.Specialization.SPECIALIZATION_NAME};
+        Cursor cursor = sd.query(DatabaseContract.Specialization.TABLE_NAME,projection,null,null,null,null,null);
+        List<DaoSpecialization> specializationList = new ArrayList<>();
+
+        while(cursor.moveToNext())
+        {
+            String specialName= cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_NAME));
+            //specializationList.add(specialization);
+            DaoSpecialization specialization1 = new DaoSpecialization(specialName);
+            specializationList.add(specialization1);
+        }
+
+        return specializationList;
+    }
+
+    public Boolean checkSpecializationExist()
+    {
+        return true;
+    }
+
+
 
 }
 

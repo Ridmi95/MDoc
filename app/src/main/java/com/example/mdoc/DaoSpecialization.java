@@ -1,24 +1,25 @@
 package com.example.mdoc;
 
-public class DaoSpeciliazation {
+public class DaoSpecialization {
 
-    //creating variables for specialization
-    private int specializationId;
+    private int id;
     private String specializationName;
     private String specializationDepartment;
     private String specializationDescription;
 
-    public DaoSpeciliazation() {
+    public DaoSpecialization() {
     }
 
-    //getters and setters
-
-    public int getSpecializationId() {
-        return specializationId;
+    public DaoSpecialization(String specializationName) {
+        this.specializationName = specializationName;
     }
 
-    public void setSpecializationId(int specializationId) {
-        this.specializationId = specializationId;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSpecializationName() {
@@ -44,26 +45,4 @@ public class DaoSpeciliazation {
     public void setSpecializationDescription(String specializationDescription) {
         this.specializationDescription = specializationDescription;
     }
-
-
-    //method implementation need to be done
-
-    public boolean addSpecialzation(){
-
-        return true;
-    }
-
-    public boolean updateSpecialzation()
-    {
-        return true;
-    }
-
-    public boolean deleteSpecialization()
-    {
-        return true;
-    }
-
-
-
-
 }
