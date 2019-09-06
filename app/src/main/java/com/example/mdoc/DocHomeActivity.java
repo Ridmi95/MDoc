@@ -21,7 +21,7 @@ public class DocHomeActivity extends AppCompatActivity {
 
     public void myPlaces(View v){
 
-        Intent intent =  new Intent(this, MyPlacesOfPractice.class);
+        Intent intent =  new Intent(this, AddPlaces.class);
         startActivity(intent);
     }
 

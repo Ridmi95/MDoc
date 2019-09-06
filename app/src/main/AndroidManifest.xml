@@ -29,7 +29,6 @@
             android:label="@string/title_activity_my_places_of_practice"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddPlaces" />
-        <activity android:name=".AddConsultationHours" />
         <activity android:name=".DocProfile" />
         <activity android:name=".QualificationActivity" />
         <activity android:name=".Appoinment" />
@@ -47,7 +46,7 @@
         <activity android:name=".doc_app" />
         <activity android:name=".View_lab_Report" />
         <activity android:name=".register" />
-        <activity android:name=".MainActivity" />
+
         <activity android:name=".Login_Form">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
