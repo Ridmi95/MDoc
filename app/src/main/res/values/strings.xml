@@ -27,7 +27,7 @@
     <string name="hinthours">Time</string>
     <string name="title_activity_add_places">AddPlaces</string>
     <string name="btnCH">Add Consultation Hours</string>
-    <string name="btnSave">Save</string>
+    <string name="btnAdd">Add Place</string>
     <string name="btnDelete">Delete</string>
     <string name="profile">My Profile</string>
     <string name="btnqualification">Qualifications and Specialization</string>
@@ -101,5 +101,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="doctor_home">Doctor Home</string>
+    <string name="view_places">VIEW PLACES</string>
+    <string name="btnSave">SAVE</string>
+    <string name="weekoftheday">Week of the day:</string>
 
 </resources>

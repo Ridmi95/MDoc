@@ -124,6 +124,7 @@
     <dimen name="profgendermargintop">0dp</dimen>
     <dimen name="listtexttextsize">25dp</dimen>
     <dimen name="list_textmarginTop">50dp</dimen>
+    <dimen name="btntop2">30dp</dimen>
 
 
 </resources>

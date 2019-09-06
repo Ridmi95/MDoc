@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".DoctorMainActivity">
     <!--heading-->
+
     <TextView
         android:background="@color/colorPrimaryLight"
         android:id="@+id/textView"
@@ -35,21 +36,20 @@
     <!--android:layout_marginTop="@dimen/text_margin"/>-->
     <!--name-->
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/dtxtnic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/hintTitle"
         android:inputType=""
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingTop="@dimen/btnpaddingr"
-        android:paddingRight="@dimen/paddingLeft"
-        android:layout_marginTop="@dimen/text_margin"/>
-
+        android:paddingRight="@dimen/paddingLeft" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/dtxtfname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -61,7 +61,7 @@
         android:paddingRight="@dimen/paddingRight"/>
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/dtxtlastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -73,7 +73,7 @@
         android:paddingRight="@dimen/paddingRight" />
     <!--email-->
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/dtxtemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -101,7 +101,7 @@
             android:paddingLeft="@dimen/btnpaddingl"/>
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/dtxtphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -112,7 +112,7 @@
     </LinearLayout>
     <!--med#-->
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/dtxtmedreg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
