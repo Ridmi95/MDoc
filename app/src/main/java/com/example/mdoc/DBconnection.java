@@ -27,11 +27,36 @@ public class DBconnection extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_SPECIALIZATION);
 
+
+        String SQL_CREATE_REGISTER = "CREATE TABLE " + DatabaseContract.register.TABLE_NAME +"("
+                                      +DatabaseContract.register.REGISTER_FIRSTNAME +" TEXT, "
+                                      +DatabaseContract.register.REGISTER_LASTNAME  + " TEXT, "
+                                      +DatabaseContract.register.REGISTER_TYPE  + " TEXT, "
+                                      +DatabaseContract.register.REGISTER_NIC   + " STRING PRIMARY KEY, "
+                                      +DatabaseContract.register.REGISTER_EMAIL  + " TEXT,"
+                                      +DatabaseContract.register.REGISTER_PASSWORD + " TEXT,"
+                                      +DatabaseContract.register.REGISTER_CONTACTNUM +" TEXT,"
+                                      +DatabaseContract.register.REGISTER_REGISTRATIONNO +" TEXT,"
+                                      +DatabaseContract.register.REGISTER_STATUS +" TEXT" + ")";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_REGISTER);
+
+        String SQL_CREATE_LOGIN =" CREATE TABLE " +DatabaseContract.login.TABLE_NAME +"("
+                                 +DatabaseContract.login._ID + " INTEGER PRIMARY KEY, "
+                                 +DatabaseContract.login.LOGIN_USERNAME + " TEXT,"
+                                 +DatabaseContract.login.LOGIN_PASSWORD + " TEXT" +")";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_LOGIN);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Specialization.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.register.TABLE_NAME );
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.login.TABLE_NAME);
+
+
 
     }
 
@@ -47,6 +72,52 @@ public class DBconnection extends SQLiteOpenHelper {
 
         long result = sd.insert(DatabaseContract.Specialization.TABLE_NAME,null,values);
         return result;
+
+    }
+
+    public boolean addregisterInfo(Daoregister register)
+    {
+        SQLiteDatabase reg = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getLastname());
+        values.put(DatabaseContract.register.REGISTER_LASTNAME,register.getLastname());
+        values.put(DatabaseContract.register.REGISTER_TYPE,register.getType());
+        values.put(DatabaseContract.register.REGISTER_NIC,register.getNic());
+        values.put(DatabaseContract.register.REGISTER_EMAIL,register.getEmail());
+        values.put(DatabaseContract.register.REGISTER_PASSWORD,register.getPassword());
+        values.put(DatabaseContract.register.REGISTER_CONTACTNUM,register.getContactnum());
+
+        long result = reg.insert(DatabaseContract.register.TABLE_NAME,null,values);
+
+        if(result > 0)
+        {
+            return true;
+        }else{
+
+            return false;
+        }
+
+    }
+
+    public boolean addloginInfo(Daologin login)
+    {
+
+        SQLiteDatabase log = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseContract.login.LOGIN_USERNAME,login.getUsername());
+        values.put(DatabaseContract.login.LOGIN_PASSWORD,login.getPassword());
+
+        long resultlog = log.insert(DatabaseContract.login.TABLE_NAME,null,values);
+
+        if(resultlog > 0)
+        {
+            return true;
+        }else{
+
+            return false;
+        }
 
     }
 

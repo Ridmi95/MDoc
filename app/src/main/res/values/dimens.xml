@@ -124,6 +124,8 @@
     <dimen name="profgendermargintop">0dp</dimen>
     <dimen name="listtexttextsize">25dp</dimen>
     <dimen name="list_textmarginTop">50dp</dimen>
+    <dimen name="regnic">5dp</dimen>
+    <dimen name="regtexts">20dp</dimen>
 
 
 </resources>
