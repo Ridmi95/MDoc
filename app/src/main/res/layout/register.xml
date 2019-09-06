@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/textIcon"
     android:orientation="vertical"
-    android:padding="@dimen/lpadding"
+    android:padding="4dp"
     tools:context=".register">
 
-    <TextView
+    <!--<TextView
         android:background="@color/colorPrimaryDark"
         android:id="@+id/Profile"
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:paddingTop="@dimen/regtextpaddingtop"
         android:paddingBottom="@dimen/regtestpaddingBottom"
         android:layout_marginRight="@dimen/regtextmarginRight"
-        android:layout_marginLeft="@dimen/regtextmarginLeft"/>
+        android:layout_marginLeft="@dimen/regtextmarginLeft"/>-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -31,17 +31,17 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
 
-        android:layout_marginTop="@dimen/FNmarginTop"
+        android:layout_marginTop="0dp"
         >
 
         <EditText
+            android:id="@+id/txtrfristname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="7"
             android:hint="@string/hintFName"
-            android:ems="7"
             android:inputType="text"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,18 +50,57 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
 
-        android:layout_marginTop="@dimen/LNmargintop"
+        android:layout_marginTop="2dp"
         >
 
         <EditText
+            android:id="@+id/txtrlastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="7"
             android:hint="@string/hintLName"
-            android:ems="7"
             android:inputType="text"
-            android:textSize="@dimen/reglntextsize"
-            />
+            android:textSize="@dimen/reglntextsize" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtrtype"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="7"
+                android:hint="Type"
+
+                android:textSize="@dimen/reglntextsize" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/categoryTypespinner"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -69,17 +108,17 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
 
-        android:layout_marginTop="@dimen/EmarginTop"
+        android:layout_marginTop="2dp"
         >
 
         <EditText
+            android:id="@+id/txtremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="7"
             android:hint="@string/email"
-            android:ems="7"
             android:inputType="text"
-            android:textSize="@dimen/regemailtestsize"
-            />
+            android:textSize="@dimen/regemailtestsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -88,17 +127,37 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
 
-        android:layout_marginTop="@dimen/MmarginTop"
+        android:layout_marginTop="2dp"
         >
 
         <EditText
+            android:id="@+id/txtrnic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="7"
+            android:hint="NIC"
+            android:inputType="text"
+            android:textSize="@dimen/regtexts" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="2dp"
+        >
+
+        <EditText
+            android:id="@+id/txtrmobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
             android:hint="@string/mobile"
-            android:ems="7"
             android:inputType="text"
-            android:textSize="@dimen/regmobiletextsize"
-            />
+            android:textSize="@dimen/regmobiletextsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -107,18 +166,20 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
 
-        android:layout_marginTop="@dimen/PmarginTop"
+        android:layout_marginTop="2dp"
         >
 
         <EditText
+            android:id="@+id/txtrpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="7"
             android:hint="@string/password"
-            android:ems="7"
-            android:inputType="text"
-            android:textSize="@dimen/regpasswordtextsize"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:inputType="textPassword"
+            android:textSize="@dimen/regpasswordtextsize" />
+    </com.google.android.material.textfield.TextInputLayout>-
+
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -126,17 +187,17 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
 
-        android:layout_marginTop="@dimen/CPmarginTop"
+        android:layout_marginTop="2dp"
         >
 
         <EditText
+            android:id="@+id/txtrconfirmpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/confirm_password"
             android:ems="7"
-            android:inputType="text"
-            android:textSize="@dimen/regconpwtextsize"
-            />
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:textSize="@dimen/regconpwtextsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
@@ -146,38 +207,43 @@
         android:layout_marginTop="@dimen/RmarginTop">
 
         <TextView
+            android:id="@+id/txtrgender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:text="@string/gender"
-            android:textSize="@dimen/Rtextsize"
-            android:layout_marginTop="@dimen/Gmargin"/>
+            android:textSize="@dimen/Rtextsize" />
 
         <RadioButton
+            android:id="@+id/txtrgendermale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/Rmarginleft1"
+            android:layout_marginTop="2dp"
             android:text="@string/male"
-            android:layout_marginTop="@dimen/RBmargin"
             android:textSize="@dimen/RtextSize" />
 
         <RadioButton
+            android:id="@+id/txtgenderfemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/RmarginLeft"
-            android:layout_marginTop="@dimen/RBFmargin"
-            android:text="@string/female"
+            android:layout_marginTop="2dp"
 
+            android:text="@string/female"
             android:textSize="@dimen/RtextSize" />
     </RadioGroup>
 
     <Button
+        android:id="@+id/btnrregister"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
+        android:layout_marginTop="2dp"
         android:background="@drawable/button_rounded"
         android:text="@string/register"
         android:textColor="@color/textIcon"
         android:textSize="@dimen/Btextsize"
-        android:layout_marginTop="20dp"/>
+        android:onClick="register"/>
 
 </LinearLayout>
 

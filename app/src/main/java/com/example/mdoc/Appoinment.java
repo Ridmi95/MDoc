@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 //import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.SimpleDateFormat;
@@ -19,14 +21,29 @@ import java.util.Locale;
 public class Appoinment extends AppCompatActivity {
 
     List<String> doctorName = new ArrayList<String>();
+    DBconnection dBconnection;
+    Spinner docspinner;
+    Daoappointment appointment = new Daoappointment();
+    EditText doctorname_appointment,patientname_appointment,email_appointment,mobile_appointment,problems_appointment,
+    Date_appointment;
+    Button btnaddapoointment,btnupdateappointment,btnviewappointment;
 
-    DatePickerDialog dpd;
-    String dateFinal;
-    int startYear = 0, startMonth = 0, startDay = 0;
+    //DatePickerDialog dpd;
+    //String dateFinal;
+    //int startYear = 0, startMonth = 0, startDay = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appoinment);
+
+        dBconnection = new DBconnection(this);
+        docspinner = findViewById(R.id.spinnerDoctor);
+        patientname_appointment = findViewById(R.id.txtappointmentPatientname);
+        email_appointment = findViewById(R.id.txtemailappointment);
+        mobile_appointment =findViewById(R.id.txtmobileappointment);
+        patientname_appointment = findViewById(R.id.txtproblemsappointment);
+        Date_appointment = findViewById(R.id.datapickerappointment);
+
 
         doctorName.add("Namal");
         doctorName.add("Namal");
@@ -43,13 +60,13 @@ public class Appoinment extends AppCompatActivity {
         doctorSpinner.setAdapter(adapter);
 
 
-        dateFinal = todayDateString();
-        Date your_date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(your_date);
-        startYear = cal.get(Calendar.YEAR);
-        startMonth = cal.get(Calendar.MONTH);
-        startDay = cal.get(Calendar.DAY_OF_MONTH);
+        //dateFinal = todayDateString();
+       //Date your_date = new Date();
+        //Calendar cal = Calendar.getInstance();
+        //cal.setTime(your_date);
+        //startYear = cal.get(Calendar.YEAR);
+        //startMonth = cal.get(Calendar.MONTH);
+        //startDay = cal.get(Calendar.DAY_OF_MONTH);
 
 
     }
@@ -71,12 +88,12 @@ public class Appoinment extends AppCompatActivity {
 
 
 
-    public String todayDateString() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "dd/MM/yyyy", Locale.getDefault());
+    //public String todayDateString() {
+        //SimpleDateFormat dateFormat = new SimpleDateFormat(
+               // "dd/MM/yyyy", Locale.getDefault());
 
-        return dateFormat.toString();
+        //return dateFormat.toString();
 
-    }
+    //}
 
 }

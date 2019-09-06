@@ -28,9 +28,49 @@
 
 
   </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtdocnameapp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="7"
+                android:hint="Doctor Name"
+
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerDoctor"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Spinner
+
+    <!--<Spinner
         android:id="@+id/spinnerDoctor"
         android:layout_marginStart="@dimen/appnamems"
         android:layout_marginEnd="@dimen/appnamemarend"
@@ -38,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
 
-        />
+        />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -52,13 +92,13 @@
         >
 
         <EditText
+            android:id="@+id/txtappointmentPatientname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="7"
-            android:hint="@string/name"
+            android:hint="Patient Name"
             android:inputType="text"
-            android:textSize="@dimen/appnametestsize"
-            />
+            android:textSize="@dimen/appnametestsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,13 +113,13 @@
         >
 
         <EditText
+            android:id="@+id/txtemailappointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
             android:ems="7"
+            android:hint="@string/email"
             android:inputType="text"
-            android:textSize="@dimen/appemailtestsize"
-            />
+            android:textSize="@dimen/appemailtestsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -93,13 +133,13 @@
         >
 
         <EditText
+            android:id="@+id/txtmobileappointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/mobile"
             android:ems="7"
+            android:hint="@string/mobile"
             android:inputType="text"
-            android:textSize="@dimen/appmobiletestsize"
-            />
+            android:textSize="@dimen/appmobiletestsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -113,13 +153,13 @@
         >
 
         <EditText
+            android:id="@+id/txtproblemsappointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/problems"
             android:ems="7"
+            android:hint="@string/problems"
             android:inputType="text"
-            android:textSize="@dimen/appproblemtestsize"
-            />
+            android:textSize="@dimen/appproblemtestsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -134,37 +174,52 @@
 
 
         <EditText
+            android:id="@+id/datapickerappointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/date"
             android:ems="7"
+            android:hint="@string/date"
             android:inputType="text"
-            android:textSize="@dimen/appdatetextsize"
-            android:onClick="press"
-            />
+
+            android:textSize="@dimen/appdatetextsize" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
+        android:id="@+id/btnaddappointment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
-        android:background="@drawable/button_rounded"
-        android:text="@string/submit"
-        android:textColor="@color/textIcon"
-        android:textSize="@dimen/Btextsize"
-        android:layout_marginTop="@dimen/appsubmitmargintop"
         android:layout_marginStart="@dimen/appsubmitmarginstart"
+        android:layout_marginTop="@dimen/appsubmitmargintop"
         android:layout_marginEnd="@dimen/appsubmitmarginend"
-        android:onClick="view"/>
+        android:background="@drawable/button_rounded"
+        android:onClick="view"
+        android:text="Add Appointment"
+        android:textColor="@color/textIcon"
+        android:textSize="@dimen/Btextsize" />
 
     <Button
+        android:id="@+id/btnupdateappointment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
+        android:layout_marginStart="@dimen/appupdatemarginstart"
+        android:layout_marginTop="@dimen/appupdatemargintop"
+        android:layout_marginEnd="@dimen/appupdatemarginend"
         android:background="@drawable/button_rounded"
         android:text="@string/update"
         android:textColor="@color/textIcon"
-        android:textSize="@dimen/Btextsize"
-        android:layout_marginTop="@dimen/appupdatemargintop"
-        android:layout_marginStart="@dimen/appupdatemarginstart"
-        android:layout_marginEnd="@dimen/appupdatemarginend"/>
+        android:textSize="@dimen/Btextsize" />
+
+    <Button
+        android:id="@+id/Viewappointment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="view"
+        android:text="View appointment"
+        android:textColor="@color/textIcon"
+        android:textSize="20sp" />
 </LinearLayout>
