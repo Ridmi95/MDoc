@@ -49,7 +49,7 @@ public class DBconnection extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_LOGIN);
 
     }
-
+    //
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Specialization.TABLE_NAME);
