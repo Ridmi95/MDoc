@@ -109,9 +109,6 @@ public class DBconnection extends SQLiteOpenHelper {
 
 
 
-
-    }
-
     public long addNewSpecialization(DaoSpecialization specialization)
     {
         SQLiteDatabase sd = getWritableDatabase();
@@ -253,6 +250,59 @@ public class DBconnection extends SQLiteOpenHelper {
         return count;
     }
 
+    public List<Daoregister> getAllPendingDoctors()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
+
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,null,null,null,null,null,null);
+        List<Daoregister> pendingDoctorList = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            Daoregister registeredPatient = new Daoregister(firstName,lastName);
+            pendingDoctorList.add(registeredPatient);
+
+        }
+        return pendingDoctorList;
+    }
+
+    public List<Daoregister> getAllRegisteredDoctors()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
+
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,DatabaseContract.register.REGISTER_STATUS,new String[]{"Registered"},null,null,null,null);
+        List<Daoregister> doctorList = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            Daoregister registeredPatient = new Daoregister(firstName,lastName);
+            doctorList.add(registeredPatient);
+
+        }
+        return doctorList;
+    }
+ /*  public long declineDoctorRequest()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        long result = sd.delete();
+        return result;
+    }*/
+
+    public long approveDoctorRequest(Daoregister register)
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        ContentValues values= new ContentValues();
+        values.put(DatabaseContract.register.REGISTER_STATUS,"Registered");
+
+
+        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_NIC + " = " + register.getNic(),null);
+        return result;
+    }
+
 
 /*
 *     public long deleteUser(int position)
@@ -265,23 +315,7 @@ public class DBconnection extends SQLiteOpenHelper {
 * */
 
 
-   /* public long declineDoctorRequest()
-    {
-        SQLiteDatabase sd = getWritableDatabase();
-     //   long result = sd.delete();
-        return result;
-    }
 
-    public long approveDoctorRequest()
-    {
-        SQLiteDatabase sd = getWritableDatabase();
-        ContentValues values= new ContentValues();
-       // values.put();
-
-
-    //    long result = sd.update();
-        return result;
-    }*/
 
 
 

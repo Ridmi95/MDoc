@@ -15,23 +15,43 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
+
 public class PendingFragment extends Fragment {
 
     ListView pendingDoctorList;
-    String names[] = {"Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4"};
+    String names[];// = {"Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4"};
     private static final String TAG = "PendingFragment";
-
+    private DBconnection dBconnection;
+    View rootView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        dBconnection = new DBconnection(getActivity().getApplicationContext());
+        rootView = inflater.inflate(R.layout.fragement_dpending,container,false);
+        return rootView;
 
+    }
 
-        View rootView = inflater.inflate(R.layout.fragement_dpending,container,false);
+    @Override
+    public void onStart() {
+        super.onStart();
+        List<Daoregister> regsiteredList = dBconnection.getAllPaatients();
+        names = new String[regsiteredList.size()];
 
+        for(int i = 0; i< regsiteredList.size(); i++)
+        {
+            String fname = regsiteredList.get(i).getFirstname();
+            String lname = regsiteredList.get(i).getLastname();
+            String FullName = fname + " " + lname;
+            names[i] = FullName;
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,names);
         pendingDoctorList = rootView.findViewById(R.id.pendingDoctor);
+
+
         pendingDoctorList.setAdapter(adapter);
 
         pendingDoctorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -40,13 +60,7 @@ public class PendingFragment extends Fragment {
                 customDialog("Pending Doctors","Do you want to  " + names[position] + " ?", "cancelMethod1","okMethod1");
             }
         });
-
-
-        return rootView;
-
     }
-
-
 
     private void declineMethod(){
         Log.d(TAG, "decline Method: Called.");
@@ -56,6 +70,10 @@ public class PendingFragment extends Fragment {
     private void approveMethod(){
         Log.d(TAG, "Approve Method: Called.");
         toastMessage("Doctor is Approved");
+
+        
+
+
     }
 
 
