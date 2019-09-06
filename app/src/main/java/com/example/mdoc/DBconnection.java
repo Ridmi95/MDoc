@@ -193,7 +193,13 @@ public class DBconnection extends SQLiteOpenHelper {
         return patientList;
     }
 
-
+    public long getTotalregisteredPatients()
+    {
+        SQLiteDatabase sd = getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(sd,DatabaseContract.register.TABLE_NAME);
+        sd.close();
+        return count;
+    }
 
 
 /*
