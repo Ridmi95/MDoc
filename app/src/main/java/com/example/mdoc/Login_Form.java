@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login_Form extends AppCompatActivity {
 
-    EditText username,password;
+    EditText username, password;
+    DBconnection dBconnection;
+    Daologin login = new Daologin();
+    Button btnlogin, btnreg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,47 +24,33 @@ public class Login_Form extends AppCompatActivity {
         setContentView(R.layout.activity_login__form);
         //getSupportActionBar().setTitle("Login");
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.userpassword);
-    }
+        dBconnection = new DBconnection(this);
 
-    public void login(View view) {
+        username = findViewById(R.id.txtusername);
+        password = findViewById(R.id.txtpassword);
+        btnlogin = findViewById(R.id.btnlogin);
+        btnreg = findViewById(R.id.btnreg_log);
 
-        String uname,upass;
-        Intent intent;
-
-        uname = username.getText().toString();
-        upass = password.getText().toString();
-
-        if(uname.equals("admin") && upass.equals("admin"))
-        {
-
-            intent = new Intent(Login_Form.this, MainNavigationActivity.class);
-            startActivity(intent);
-
-        }else if(uname.equals("customer") && upass.equals("customer"))
-        {
-            intent = new Intent(this, MainHome.class);
-            startActivity(intent);
-        }else if(uname.equals("lab") && upass.equals("lab"))
-        {
-            intent = new Intent(this, reportMainja.class);
-            startActivity(intent);
-        }else if(uname.equals("doctor") && upass.equals("doctor"))
-        {
-            intent = new Intent(this, DocHomeActivity.class);
-            startActivity(intent);
-        }
-
-
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String uname = username.getText().toString().trim();
+                String upass = password.getText().toString().trim();
+                Log.i("username",uname);
+                Log.i("password",upass);
+                if(uname.equals("admin") && upass.equals("admin"))
+                {
+                    Intent intent = new Intent(Login_Form.this,MainNavigationActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
 
     }
 
-    public void signup(View view) {
+    public void viewregister(View view) {
+
         Intent intent = new Intent(this,register.class);
         startActivity(intent);
     }
 }
-
-
-//signup(View view)

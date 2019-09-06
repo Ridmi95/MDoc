@@ -136,7 +136,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent">
 
+
         <EditText
+            android:id="@+id/edtSpecialKey"
+            android:layout_width="310dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="45dp"
+            android:hint="@string/specialkey"
+            android:background="@drawable/roundededittext"
+            />
+
+        <EditText
+            android:id="@+id/edtSpecializationName"
             android:layout_width="310dp"
             android:layout_height="37dp"
             android:layout_marginStart="25dp"
@@ -146,11 +158,12 @@
             android:background="@drawable/roundededittext" />
 
         <Spinner
+
             android:id="@+id/categoryspinner"
             android:layout_width="310dp"
             android:layout_height="37dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/roundededittext"
 
             >
@@ -161,32 +174,53 @@
 
 
         <EditText
+            android:id="@+id/edtDescription"
             android:layout_width="310dp"
             android:layout_height="91dp"
             android:paddingStart="20dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/description"
             android:background="@drawable/roundededittext" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
             <Button
+                android:id="@+id/btnAddNewSpecialization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="85dp"
                 android:layout_marginTop="35dp"
-                android:layout_marginBottom="35dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/button_rounded"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
                 android:text="@string/add_specialization"
+                android:textColor="@color/textIcon"
+                android:textSize="20dp"
 
-                android:textColor="@color/textIcon" />
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnViewSpecialization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="85dp"
+
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_rounded"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/view_specialization"
+                android:textColor="@color/textIcon"
+                android:textSize="20dp"
+
+                android:textStyle="bold" />
+
 
 
         </LinearLayout>

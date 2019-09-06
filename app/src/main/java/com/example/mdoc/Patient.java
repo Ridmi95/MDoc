@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Patient extends AppCompatActivity {
-    ListView patientList;
-    String names[] = {"Patient 1","Patient 2","Patient 3","Patient 4","Patient 1","Patient 2","Patient 3","Patient 4","Patient 1","Patient 2","Patient 3","Patient 4"};
+import java.util.List;
 
+public class Patient extends AppCompatActivity {
+    private ListView patientList;
+    private String names[];
+    private DBconnection dBconnection = new DBconnection(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +24,21 @@ public class Patient extends AppCompatActivity {
         setContentView(R.layout.activity_doctor);
         patientList = findViewById(R.id.doctorList);
 
+        List<Daoregister> regsiteredList = dBconnection.getAllPaatients();
+        names = new String[regsiteredList.size()];
+        for(int i = 0; i< regsiteredList.size(); i++)
+        {
+            String fname = regsiteredList.get(i).getFirstname();
+            String lname = regsiteredList.get(i).getLastname();
+            String FullName = fname + " " + lname;
+            names[i] = FullName;
+        }
+
+
+
         Patient.MyAdapter adapter = new Patient.MyAdapter(this,names);
         patientList.setAdapter(adapter);
+
 
         //doctorList.setOnItemClickListener();
     }

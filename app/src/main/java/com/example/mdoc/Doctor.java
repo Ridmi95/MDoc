@@ -67,6 +67,7 @@ public class Doctor extends AppCompatActivity {
         //doctorList.setOnItemClickListener();
     }
 
+
     class MyAdapter extends ArrayAdapter<String>
     {
         Context context;
