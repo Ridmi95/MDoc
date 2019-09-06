@@ -15,7 +15,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mDoc.db";
     public DBconnection(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class DBconnection extends SQLiteOpenHelper {
         SQLiteDatabase reg = getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getLastname());
+        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getFirstname());
         values.put(DatabaseContract.register.REGISTER_LASTNAME,register.getLastname());
         values.put(DatabaseContract.register.REGISTER_TYPE,register.getType());
         values.put(DatabaseContract.register.REGISTER_NIC,register.getNic());
@@ -174,6 +174,25 @@ public class DBconnection extends SQLiteOpenHelper {
         Log.i("Position ",String.valueOf(specialization.getId()));
         return result;
     }
+
+    public List<Daoregister> getAllPaatients()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
+
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,null,null,null,null,null);
+        List<Daoregister> patientList = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            Daoregister registeredPatient = new Daoregister(firstName,lastName);
+            patientList.add(registeredPatient);
+
+        }
+        return patientList;
+    }
+
 
 
 
