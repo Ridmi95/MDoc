@@ -1,5 +1,6 @@
 package com.example.mdoc;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,10 +21,12 @@ import java.util.List;
 
 public class PendingFragment extends Fragment {
 
-    ListView pendingDoctorList;
-    String names[];// = {"Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4"};
+    private ListView pendingDoctorList;
+    private String names[] = {"Doctor 1","Doctor 2"};
+    private String docNic[] = {"1","2"};
     private static final String TAG = "PendingFragment";
     private DBconnection dBconnection;
+
     View rootView;
     @Nullable
     @Override
@@ -37,21 +41,32 @@ public class PendingFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        List<Daoregister> regsiteredList = dBconnection.getAllPaatients();
-        names = new String[regsiteredList.size()];
+        List<Daoregister> pendindDoctors = dBconnection.getAllPendingDoctors();
 
-        for(int i = 0; i< regsiteredList.size(); i++)
+        pendingDoctorList = rootView.findViewById(R.id.pendingDoctor);
+        names = new String[pendindDoctors.size()];
+        docNic = new String[pendindDoctors.size()];
+        for(int i = 0; i< pendindDoctors.size(); i++)
         {
-            String fname = regsiteredList.get(i).getFirstname();
-            String lname = regsiteredList.get(i).getLastname();
+            String fname = pendindDoctors.get(i).getFirstname();
+            String lname = pendindDoctors.get(i).getLastname();
+            String docNic = pendindDoctors.get(i).getNic();
             String FullName = fname + " " + lname;
-            names[i] = FullName;
+           // names[i] = FullName;
+            //this.docNic[i] = docNic;
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,names);
-        pendingDoctorList = rootView.findViewById(R.id.pendingDoctor);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,names);
+        //pendingDoctorList = rootView.findViewById(R.id.pendingDoctor);
 
+        PendingFragment.MyAdapter adapter = new PendingFragment.MyAdapter(getActivity().getApplicationContext(),names, docNic);
 
+        /*
+        *
+        AdminViewSpecialization.MyAdapter adapter = new AdminViewSpecialization.MyAdapter(this,specialList,DepartmentList,keyList);
+        spcializationList.setAdapter(adapter);
+
+        * */
         pendingDoctorList.setAdapter(adapter);
 
         pendingDoctorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,19 +80,25 @@ public class PendingFragment extends Fragment {
     private void declineMethod(){
         Log.d(TAG, "decline Method: Called.");
         toastMessage("Doctor is Declined");
+
+
     }
 
     private void approveMethod(){
-        Log.d(TAG, "Approve Method: Called.");
-        toastMessage("Doctor is Approved");
 
-        
+        pendingDoctorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String name = (String) pendingDoctorList.getItemAtPosition(i);
+                dBconnection.approveDoctorRequest(name);
+                Log.d(TAG, "Approve Method: Called.");
+                toastMessage("Doctor is Approved");
+
+            }
+        });
 
 
     }
-
-
-
 
     /*
         This the custom dialog box
@@ -124,6 +145,39 @@ public class PendingFragment extends Fragment {
     public void toastMessage(String message){
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
+
+
+
+    class MyAdapter extends ArrayAdapter<String>
+    {
+        Context context;
+        String name[];
+        String nic[];
+
+
+        MyAdapter(Context c, String name[],String[] nic)
+        {
+            super(c,R.layout.pendingddoctorsrow,name);
+            this.context = c;
+            this.name = name;
+            this.nic = nic;
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater layoutInflater = (LayoutInflater)getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = layoutInflater.inflate(R.layout.pendingddoctorsrow,parent,false);
+            TextView name = row.findViewById(R.id.pendingDoctor);
+            TextView nic = row.findViewById(R.id.pendingDoctorNic);
+
+            name.setText(names[position]);
+            nic.setText(docNic[position]);
+
+            return row;
+        }
+    }
+
 
 
     }

@@ -277,9 +277,10 @@ public class DBconnection extends SQLiteOpenHelper {
         List<Daoregister> doctorList = new ArrayList<>();
         while(cursor.moveToNext())
         {
+            String Nic = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_NIC));
             String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
             String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
-            Daoregister registeredPatient = new Daoregister(firstName,lastName);
+            Daoregister registeredPatient = new Daoregister(firstName,lastName,Nic);
             doctorList.add(registeredPatient);
 
         }
@@ -292,14 +293,14 @@ public class DBconnection extends SQLiteOpenHelper {
         return result;
     }*/
 
-    public long approveDoctorRequest(Daoregister register)
+    public long approveDoctorRequest(String name)
     {
         SQLiteDatabase sd = getWritableDatabase();
         ContentValues values= new ContentValues();
         values.put(DatabaseContract.register.REGISTER_STATUS,"Registered");
-
-
-        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_NIC + " = " + register.getNic(),null);
+        //String selection = DatabaseContract.register.REGISTER_FIRSTNAME + " " + DatabaseContract.register.REGISTER_LASTNAME;
+        //dinuka perera
+        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_FIRSTNAME + " LIKE " + name +"%",null);
         return result;
     }
 
