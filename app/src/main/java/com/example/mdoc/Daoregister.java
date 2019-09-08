@@ -24,6 +24,12 @@ public class Daoregister {
         this.lastname = lastname;
     }
 
+    public Daoregister(String firstname, String lastname, String nic) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.nic = nic;
+    }
+
     public String getFirstname() {
         return firstname;
     }
