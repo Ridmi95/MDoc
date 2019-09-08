@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="6dp"
+    android:weightSum="2"
     >
 
     <TextView
@@ -17,14 +18,22 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="Pending Doctor Name"
-
+        android:layout_weight="1"
         />
 
-
-    <ImageButton
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/pendingDoctorNic"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/decline"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:textSize="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Pending Doctor Name"
+        android:layout_weight="1"
 
         />
+
+
 </LinearLayout>

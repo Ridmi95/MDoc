@@ -3,27 +3,51 @@ package com.example.mdoc;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.widget.Button;
+import android.widget.EditText;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DBconnection extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mDoc.db";
+
+
+   // public DBconnection(Context context) {
+   //     super(context, DATABASE_NAME, null, 2);
+
     public DBconnection(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 3);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " ( "
-                                            + DatabaseContract.Specialization._ID + " INTEGER PRIMARY KEY, "
+        String CREATE_TABLE_POP ="CREATE TABLE "
+                + DatabaseContract.Entry.table_name + "(" +
+                DatabaseContract.Entry.col_1+ " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                DatabaseContract.Entry.col_2 + " TEXT," +
+                DatabaseContract.Entry.col_3 + " TEXT," +
+                DatabaseContract.Entry.col_4 + " TEXT," +
+                DatabaseContract.Entry.col_5 + " TEXT," +
+                DatabaseContract.Entry.col_6 + " TEXT" +")";
+
+        sqLiteDatabase.execSQL(CREATE_TABLE_POP);
+
+        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " ( " + DatabaseContract.Specialization.SPECIALIZATION_KEY + " INTEGER PRIMARY KEY,"
                                             + DatabaseContract.Specialization.SPECIALIZATION_NAME + " TEXT, "
-                                            + DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT + " TEXT,"
-                                            + DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION + " TEXT " + " )";
+                                            + DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT + " TEXT, "
+                                            + DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION + " TEXT" + ");";
 
 
         sqLiteDatabase.execSQL(SQL_CREATE_SPECIALIZATION);
@@ -61,21 +85,51 @@ public class DBconnection extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_APPOINTMENT);
 
     }
-
+    //
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Specialization.TABLE_NAME);
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Entry.table_name);
+         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Specialization.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.register.TABLE_NAME );
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.login.TABLE_NAME);
+
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Appointment.TABLE_NAME);
+
         onCreate(sqLiteDatabase);
     }
+
+    public long insertData(DaoPlaceOfPractice pop){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentvalues = new ContentValues();
+        contentvalues.put(DatabaseContract.Entry.col_2, pop.getHospital_Name());
+        contentvalues.put(DatabaseContract.Entry.col_3, pop.getAddress());
+        contentvalues.put(DatabaseContract.Entry.col_4, pop.getContact_Number());
+        contentvalues.put(DatabaseContract.Entry.col_5, pop.getDate());
+        contentvalues.put(DatabaseContract.Entry.col_6, pop.getTime());
+
+       long result = db.insert(DatabaseContract.Entry.table_name, null, contentvalues);
+
+       return result;
+    }
+
+    //returning information from the database
+    public Cursor viewData(){
+    SQLiteDatabase sqldb = this.getWritableDatabase() ;
+    Cursor result = sqldb.rawQuery("SELECT * FROM "+DatabaseContract.Entry.table_name, null);
+
+    return result;
+}
+
+
+
 
     public long addNewSpecialization(DaoSpecialization specialization)
     {
         SQLiteDatabase sd = getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(DatabaseContract.Specialization.SPECIALIZATION_KEY,specialization.getId());
         values.put(DatabaseContract.Specialization.SPECIALIZATION_NAME,specialization.getSpecializationName());
         values.put(DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT,specialization.getSpecializationDepartment());
         values.put(DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION,specialization.getSpecializationDescription());
@@ -90,7 +144,7 @@ public class DBconnection extends SQLiteOpenHelper {
         SQLiteDatabase reg = getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getLastname());
+        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getFirstname());
         values.put(DatabaseContract.register.REGISTER_LASTNAME,register.getLastname());
         values.put(DatabaseContract.register.REGISTER_TYPE,register.getType());
         values.put(DatabaseContract.register.REGISTER_NIC,register.getNic());
@@ -167,25 +221,44 @@ public class DBconnection extends SQLiteOpenHelper {
     {
         DaoSpecialization specialization = new DaoSpecialization();
         SQLiteDatabase sd= getReadableDatabase();
-        String[] projection = {DatabaseContract.Specialization.SPECIALIZATION_NAME};
+        String[] projection = {DatabaseContract.Specialization.SPECIALIZATION_NAME,DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT,DatabaseContract.Specialization.SPECIALIZATION_KEY,DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION};
         Cursor cursor = sd.query(DatabaseContract.Specialization.TABLE_NAME,projection,null,null,null,null,null);
         List<DaoSpecialization> specializationList = new ArrayList<>();
 
         while(cursor.moveToNext())
         {
             String specialName= cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_NAME));
+            String departmentName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT));
+            String specialKey = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_KEY));
+            String specialDesc = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION));
             //specializationList.add(specialization);
-            DaoSpecialization specialization1 = new DaoSpecialization(specialName);
+            DaoSpecialization specialization1 = new DaoSpecialization(Integer.parseInt(specialKey),specialName,departmentName,specialDesc);
             specializationList.add(specialization1);
         }
 
         return specializationList;
     }
 
-    public Boolean checkSpecializationExist()
+    public Long checkSpecializationExist(String name)
     {
-        return true;
+        SQLiteDatabase sd = getReadableDatabase();
+        long count = DatabaseUtils.longForQuery(sd, "SELECT COUNT (*) FROM " + DatabaseContract.Specialization.TABLE_NAME + " WHERE " + DatabaseContract.Specialization.SPECIALIZATION_NAME + "=?",new String[] { name });
+        return count;
     }
+
+
+    public long updateSpecialization(DaoSpecialization specialization)
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        ContentValues values= new ContentValues();
+        values.put(DatabaseContract.Specialization.SPECIALIZATION_NAME,specialization.getSpecializationName());
+        values.put(DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT,specialization.getSpecializationDepartment());
+        long result = sd.update(DatabaseContract.Specialization.TABLE_NAME,values,DatabaseContract.Specialization.SPECIALIZATION_KEY + " =? ",new String[]{String.valueOf(specialization.getId())});
+        Log.i("Update Id", DatabaseContract.Specialization.SPECIALIZATION_KEY);
+        Log.i("Position ",String.valueOf(specialization.getId()));
+        return result;
+    }
+
 
     public boolean checkLogin(Daoregister daoregister)
     {
@@ -246,6 +319,110 @@ public class DBconnection extends SQLiteOpenHelper {
         return  result;
 
     }
+
+    public long deleteSpecialization(DaoSpecialization specialization)
+    {
+        //delete all query
+        //long result= sd.delete(DatabaseContract.Specialization.TABLE_NAME,null ,null);
+
+        SQLiteDatabase sd = getWritableDatabase();
+        long result= sd.delete(DatabaseContract.Specialization.TABLE_NAME,DatabaseContract.Specialization.SPECIALIZATION_KEY + " = " + specialization.getId() ,null);
+        Log.i("Update Id", DatabaseContract.Specialization.SPECIALIZATION_KEY);
+        Log.i("Position ",String.valueOf(specialization.getId()));
+        return result;
+    }
+
+    public List<Daoregister> getAllPaatients()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
+
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,null,null,null,null,null);
+        List<Daoregister> patientList = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            Daoregister registeredPatient = new Daoregister(firstName,lastName);
+            patientList.add(registeredPatient);
+
+        }
+        return patientList;
+    }
+
+    public long getTotalregisteredPatients()
+    {
+        SQLiteDatabase sd = getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(sd,DatabaseContract.register.TABLE_NAME);
+        sd.close();
+        return count;
+    }
+
+    public List<Daoregister> getAllPendingDoctors()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
+
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,null,null,null,null,null,null);
+        List<Daoregister> pendingDoctorList = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            Daoregister registeredPatient = new Daoregister(firstName,lastName);
+            pendingDoctorList.add(registeredPatient);
+
+        }
+        return pendingDoctorList;
+    }
+
+    public List<Daoregister> getAllRegisteredDoctors()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
+
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,DatabaseContract.register.REGISTER_STATUS,new String[]{"Registered"},null,null,null,null);
+        List<Daoregister> doctorList = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            String Nic = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_NIC));
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            Daoregister registeredPatient = new Daoregister(firstName,lastName,Nic);
+            doctorList.add(registeredPatient);
+
+        }
+        return doctorList;
+    }
+ /*  public long declineDoctorRequest()
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        long result = sd.delete();
+        return result;
+    }*/
+
+    public long approveDoctorRequest(String name)
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        ContentValues values= new ContentValues();
+        values.put(DatabaseContract.register.REGISTER_STATUS,"Registered");
+        //String selection = DatabaseContract.register.REGISTER_FIRSTNAME + " " + DatabaseContract.register.REGISTER_LASTNAME;
+        //dinuka perera
+        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_FIRSTNAME + " LIKE " + name +"%",null);
+        return result;
+    }
+
+
+/*
+*     public long deleteUser(int position)
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        long result = sd.delete(DB_Contract.UserMaster.TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
+        return result;
+    }
+
+* */
+
 
 
 

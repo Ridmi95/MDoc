@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,18 +16,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private LinearLayout docLayout;
     private LinearLayout patient;
     private LinearLayout specialization;
-
+    private TextView noOfDoctors,noOfPatients;
+    private DBconnection dBconnection;
+    private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        dBconnection = new DBconnection(getActivity().getApplicationContext());
+        rootView = inflater.inflate(R.layout.fragement_dhome,container,false);
+        noOfPatients = rootView.findViewById(R.id.oOfRegisteredPatients);
 
-        return inflater.inflate(R.layout.fragement_dhome,container,false);
+
+        return rootView;
 
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        noOfPatients.setText((String.valueOf(dBconnection.getTotalregisteredPatients())));
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+
         docLayout = getActivity().findViewById(R.id.layoutdoctor);
         docLayout.setOnClickListener(this);
 

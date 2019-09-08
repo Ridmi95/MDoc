@@ -14,6 +14,22 @@ public class Daoregister {
     public Daoregister() {
     }
 
+
+    //created a overloaded constructor by usng first name
+    //and last name by Dinuka
+
+
+    public Daoregister(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    public Daoregister(String firstname, String lastname, String nic) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.nic = nic;
+    }
+
     public String getFirstname() {
         return firstname;
     }
