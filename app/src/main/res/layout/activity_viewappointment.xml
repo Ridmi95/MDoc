@@ -3,34 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".listOfDoc">
+    android:orientation="vertical"
+    tools:context=".viewappointment">
 
     <TextView
         android:background="@color/colorPrimaryDark"
-        android:id="@+id/Profile"
+        android:id="@+id/app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/list_of_doctors"
+        android:text="Appointments"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textColor="@color/textIcon"
-        android:textSize="@dimen/listtexttextsize"
-        android:paddingTop="@dimen/listtextpaddingtop"
-        android:paddingBottom="15dp"/>
+        android:textSize="25dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/listimageheight"
         android:padding="@dimen/listimagepadding"
-        android:src="@drawable/lab6" />
+        android:src="@drawable/appointment" />
 
     <ListView
-        android:id="@+id/listodoc"
+        android:id="@+id/viewapp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
-
 
 </LinearLayout>

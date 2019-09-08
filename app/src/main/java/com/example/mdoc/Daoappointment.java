@@ -12,6 +12,14 @@ public class Daoappointment {
     public Daoappointment() {
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public String getDoctorname() {
         return doctorname;
     }
@@ -36,13 +44,6 @@ public class Daoappointment {
         this.email = email;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
 
     public String getProblems() {
         return problems;

@@ -3,8 +3,10 @@ package com.example.mdoc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +16,7 @@ public class Login_Form extends AppCompatActivity {
 
     EditText username, password;
     DBconnection dBconnection;
-    Daologin login = new Daologin();
+    Daoregister register = new Daoregister();
     Button btnlogin, btnreg;
 
     @Override
@@ -26,7 +28,7 @@ public class Login_Form extends AppCompatActivity {
         dBconnection = new DBconnection(this);
 
         username = findViewById(R.id.txtusername);
-        password = findViewById(R.id.txtrpassword);
+        password = findViewById(R.id.txtpassword);
         btnlogin = findViewById(R.id.btnlogin);
         btnreg = findViewById(R.id.btnreg_log);
 
@@ -36,6 +38,8 @@ public class Login_Form extends AppCompatActivity {
 
                 Toast toast;
 
+
+
                 if (TextUtils.isEmpty(username.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter Username", Toast.LENGTH_LONG);
                     toast.show();
@@ -44,12 +48,20 @@ public class Login_Form extends AppCompatActivity {
                     toast.show();
                 } else {
 
-                    login.setUsername(username.getText().toString().trim());
-                    login.setPassword(password.getText().toString().trim());
+                    register.setEmail(username.getText().toString().trim());
+                    register.setPassword(password.getText().toString().trim());
 
-                    if (dBconnection.addloginInfo(login) == true) {
-                        toast = Toast.makeText(getApplicationContext(), " Successfully loging ", Toast.LENGTH_LONG);
+
+                    if (dBconnection.checkLogin(register) == true) {
+                        toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
                         toast.show();
+                        Intent intent = new Intent(Login_Form.this,MainHome.class);
+
+                        Log.i("cdscd",username.getText().toString().trim());
+                        SharedPreferences.Editor editor = getSharedPreferences("userPreference",0).edit();
+                        editor.putString("userEmail",username.getText().toString());
+                        editor.commit();
+                        startActivity(intent);
 
                     } else {
                         toast = Toast.makeText(getApplicationContext(), "Error in login", Toast.LENGTH_LONG);
@@ -112,4 +124,6 @@ public class Login_Form extends AppCompatActivity {
         Intent intent = new Intent(this,register.class);
         startActivity(intent);
     }
+
+
 }
