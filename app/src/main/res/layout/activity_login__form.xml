@@ -20,6 +20,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_marginTop="@dimen/FNmarginTop"
+
         >
 
         <EditText
@@ -62,6 +63,7 @@
         android:textColor="@color/textIcon"
         android:textSize="@dimen/Btextsize"
         android:layout_marginTop="@dimen/btnlogin"
+
         />
 
     <Button

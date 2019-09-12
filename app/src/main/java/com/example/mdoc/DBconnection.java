@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -57,7 +58,7 @@ public class DBconnection extends SQLiteOpenHelper {
                                       +DatabaseContract.register.REGISTER_FIRSTNAME +" TEXT, "
                                       +DatabaseContract.register.REGISTER_LASTNAME  + " TEXT, "
                                       +DatabaseContract.register.REGISTER_TYPE  + " TEXT, "
-                                      +DatabaseContract.register.REGISTER_NIC   + " STRING PRIMARY KEY, "
+                                      +DatabaseContract.register.REGISTER_NIC   + " TEXT PRIMARY KEY, "
                                       +DatabaseContract.register.REGISTER_EMAIL  + " TEXT,"
                                       +DatabaseContract.register.REGISTER_PASSWORD + " TEXT,"
                                       +DatabaseContract.register.REGISTER_CONTACTNUM +" TEXT,"
@@ -73,6 +74,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOGIN);
 
+
         /*-------------------------LAB REPORT---------------------------*/
 
         String SQL_CREATE_LAB = " CREATE TABLE " +DatabaseContract.lab.TABLE_NAME+ " ( "
@@ -80,6 +82,18 @@ public class DBconnection extends SQLiteOpenHelper {
                 +DatabaseContract.lab.LAB_NAME+" VARCHAR, "+DatabaseContract.lab.LAB_AGE+" VARCHAR, "+DatabaseContract.lab.LAB_IMAGE+ " BLOB "+" ) ";
 
         sqLiteDatabase.execSQL(SQL_CREATE_LAB);
+
+/***************************************Appointment Table ********************/
+        String SQL_CREATE_APPOINTMENT = " CREATE TABLE " +DatabaseContract.Appointment.TABLE_NAME +"("
+                                   +DatabaseContract.Appointment._ID + " INTEGER PRIMARY KEY,"
+                                   +DatabaseContract.Appointment.APPOINTMENT_DOCTORNAME +" TEXT,"
+                                   +DatabaseContract.Appointment.APPOINTMENT_PATIENTNAME +" TEXT,"
+                                   +DatabaseContract.Appointment.APPOINTMENT_EMAIL +" TEXT,"
+                                   +DatabaseContract.Appointment.APPOINTMENT_MOBILE +" TEXT,"
+                                   +DatabaseContract.Appointment.APPOINTMRNT_PROBLEM +" TEXT,"
+                                   +DatabaseContract.Appointment.APPOINTMENT_DATE +" TEXT" + ")";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_APPOINTMENT);
 
 
     }
@@ -91,6 +105,9 @@ public class DBconnection extends SQLiteOpenHelper {
          sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Specialization.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.register.TABLE_NAME );
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.login.TABLE_NAME);
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.Appointment.TABLE_NAME);
+
         onCreate(sqLiteDatabase);
     }
 
@@ -180,6 +197,38 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
+    public  boolean addAppointmentInfo(Daoappointment Appoinment)
+    {
+
+        SQLiteDatabase app = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseContract.Appointment.APPOINTMENT_DOCTORNAME,Appoinment.getDoctorname());
+        values.put(DatabaseContract.Appointment.APPOINTMENT_PATIENTNAME,Appoinment.getPatientname());
+        values.put(DatabaseContract.Appointment.APPOINTMENT_EMAIL,Appoinment.getEmail());
+        values.put(DatabaseContract.Appointment.APPOINTMENT_MOBILE,Appoinment.getMobile());
+        values.put(DatabaseContract.Appointment.APPOINTMRNT_PROBLEM,Appoinment.getProblems());
+        values.put(DatabaseContract.Appointment.APPOINTMENT_DATE,Appoinment.getDate());
+        Log.i("name",Appoinment.getDoctorname());
+        Log.i("patient",Appoinment.getPatientname());
+        Log.i("email",Appoinment.getEmail());
+        Log.i("mbile",Appoinment.getMobile());
+        Log.i("prob",Appoinment.getProblems());
+        Log.i("date",Appoinment.getDate());
+
+        long resultapp = app.insert(DatabaseContract.Appointment.TABLE_NAME,null,values);
+        Log.i("result",String.valueOf(resultapp));
+        if (resultapp > 0)
+        {
+            return true;
+        }else{
+            return false;
+        }
+
+
+
+    }
+
     public List<DaoSpecialization> getAllSpecialization()
     {
         DaoSpecialization specialization = new DaoSpecialization();
@@ -220,6 +269,67 @@ public class DBconnection extends SQLiteOpenHelper {
         Log.i("Update Id", DatabaseContract.Specialization.SPECIALIZATION_KEY);
         Log.i("Position ",String.valueOf(specialization.getId()));
         return result;
+    }
+
+
+    public boolean checkLogin(Daoregister daoregister)
+    {
+        SQLiteDatabase sd = getWritableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_EMAIL,DatabaseContract.register.REGISTER_PASSWORD};
+        String selection = DatabaseContract.register.REGISTER_EMAIL + "=?" + " and " + DatabaseContract.register.REGISTER_PASSWORD + "=?";
+        String[] selectionArgs = {daoregister.getEmail(),daoregister.getPassword()};
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,selection,selectionArgs,null,null,null);
+        int count = cursor.getCount();
+        if(count > 0)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+   public Cursor viewData(){
+
+        SQLiteDatabase sqldb = this.getWritableDatabase();
+        Cursor result = sqldb.rawQuery("SELECT * FROM "+DatabaseContract.Appointment.TABLE_NAME,null);
+
+       return  result;
+
+   }
+
+    public Daoregister getProfileDetails(String userEmail)
+    {
+        SQLiteDatabase sd = getReadableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME,DatabaseContract.register.REGISTER_EMAIL,DatabaseContract.register.REGISTER_NIC,DatabaseContract.register.REGISTER_CONTACTNUM};
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,DatabaseContract.register.REGISTER_EMAIL + " = " + userEmail,null,null,null,null);
+        Daoregister userProfile = new Daoregister();
+
+        while (cursor.moveToNext()){
+            String fname = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lname = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_EMAIL));
+            String nic = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_NIC));
+            String mobile = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_CONTACTNUM));
+
+            userProfile.setFirstname(fname);
+            userProfile.setLastname(lname);
+            userProfile.setEmail(email);
+            userProfile.setNic(nic);
+            userProfile.setContactnum(Integer.parseInt(mobile));
+
+        }
+
+        return userProfile;
+
+    }
+
+    public Cursor viewDataListofDoctors(){
+
+        SQLiteDatabase sqldbl = this.getWritableDatabase();
+        Cursor result = sqldbl.rawQuery("SELECT * FROM "+DatabaseContract.Appointment.TABLE_NAME,null);
+        //doctors table
+        return  result;
+
     }
 
     public long deleteSpecialization(DaoSpecialization specialization)
@@ -380,13 +490,12 @@ public class DBconnection extends SQLiteOpenHelper {
 *     public long deleteUser(int position)
     {
         SQLiteDatabase sd = getWritableDatabase();
-        long result = sd.delete(DB_Contract.UserMaster.TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
+        long result = sd.delete(DB_Contract.User
+        .TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
         return result;
     }
 
 * */
-
-
 
 
 
