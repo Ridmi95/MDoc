@@ -10,6 +10,7 @@ import android.util.Log;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteStatement;
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
@@ -73,6 +74,16 @@ public class DBconnection extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOGIN);
 
+
+        /*-------------------------LAB REPORT---------------------------*/
+
+        String SQL_CREATE_LAB = " CREATE TABLE " +DatabaseContract.lab.TABLE_NAME+ " ( "
+                +DatabaseContract.lab.LAB_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                +DatabaseContract.lab.LAB_NAME+" VARCHAR, "+DatabaseContract.lab.LAB_AGE+" VARCHAR, "+DatabaseContract.lab.LAB_IMAGE+ " BLOB "+" ) ";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_LAB);
+
+/***************************************Appointment Table ********************/
         String SQL_CREATE_APPOINTMENT = " CREATE TABLE " +DatabaseContract.Appointment.TABLE_NAME +"("
                                    +DatabaseContract.Appointment._ID + " INTEGER PRIMARY KEY,"
                                    +DatabaseContract.Appointment.APPOINTMENT_DOCTORNAME +" TEXT,"
@@ -83,6 +94,7 @@ public class DBconnection extends SQLiteOpenHelper {
                                    +DatabaseContract.Appointment.APPOINTMENT_DATE +" TEXT" + ")";
 
         sqLiteDatabase.execSQL(SQL_CREATE_APPOINTMENT);
+
 
     }
     //
@@ -411,13 +423,75 @@ public class DBconnection extends SQLiteOpenHelper {
         long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_FIRSTNAME + " LIKE " + name +"%",null);
         return result;
     }
+  /*----------------------------------------- LAB REPORT DB -----------------------------------------------------*/
+
+
+
+
+
+
+
+    //insertData
+    public void insertData(String name, String age, byte[] image){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to insert record in database table
+        String sql = "INSERT INTO RECORD VALUES(NULL, ?, ?, ?)";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, name);
+        statement.bindString(2, age);
+        statement.bindBlob(3, image);
+
+
+        statement.executeInsert();
+    }
+
+    //updateData
+    public void updateData(String name, String age, byte[] image, int id){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to update record
+        String sql = "UPDATE RECORD SET name=?, age=?, image=? WHERE id=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1, name);
+        statement.bindString(2, age);
+
+        statement.bindBlob(3, image);
+        statement.bindDouble(4, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    //deleteData
+    public void deleteData(int id){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to delete record using id
+        String sql = "DELETE FROM RECORD WHERE id=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public Cursor getData(String sql){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, null);
+    }
 
 
 /*
 *     public long deleteUser(int position)
     {
         SQLiteDatabase sd = getWritableDatabase();
-        long result = sd.delete(DB_Contract.UserMaster.TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
+        long result = sd.delete(DB_Contract.User
+        .TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
         return result;
     }
 
