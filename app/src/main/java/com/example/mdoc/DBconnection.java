@@ -45,7 +45,11 @@ public class DBconnection extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(CREATE_TABLE_POP);
 
+
+       
+
         String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " (" + DatabaseContract.Specialization.SPECIALIZATION_KEY + " INTEGER PRIMARY KEY,"
+
                                             + DatabaseContract.Specialization.SPECIALIZATION_NAME + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION + " TEXT" + ");";
@@ -126,15 +130,39 @@ public class DBconnection extends SQLiteOpenHelper {
     }
 
     //returning information from the database
-    public Cursor viewData(){
+    public Cursor ViewData(){
     SQLiteDatabase sqldb = this.getWritableDatabase() ;
     Cursor result = sqldb.rawQuery("SELECT * FROM "+DatabaseContract.Entry.table_name, null);
 
     return result;
 }
 
+//view patients data
+    public Cursor ViewPatientsData(){
+        SQLiteDatabase sqldb = this.getWritableDatabase() ;
+        Cursor result = sqldb.rawQuery("SELECT * FROM "+DatabaseContract.Appointment.TABLE_NAME, null);
+
+        return result;
+    }
+//delete POP details
+
+ //update profile
+    public void updateProfileDetails(Daoregister registerUpdate){
+        SQLiteDatabase sqldb = getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseContract.register.REGISTER_FIRSTNAME, registerUpdate.getFirstname());
+        values.put(DatabaseContract.register.REGISTER_LASTNAME, registerUpdate.getLastname());
+        values.put(DatabaseContract.register.REGISTER_EMAIL, registerUpdate.getEmail());
+        values.put(DatabaseContract.register.REGISTER_CONTACTNUM, registerUpdate.getContactnum());
+        values.put(DatabaseContract.register.REGISTER_REGISTRATIONNO, registerUpdate.getMedicalregno());
+
+//        String updateQuery = "UPDATE " +DatabaseContract.register.TABLE_NAME + " SET " + DatabaseContract.register.REGISTER_FIRSTNAME + " = '" + registerUpdate.getFirstname() +
+
+        sqldb.update(DatabaseContract.register.TABLE_NAME, values, "nic = ?", null);
 
 
+    }
 
     public long addNewSpecialization(DaoSpecialization specialization)
     {

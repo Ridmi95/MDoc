@@ -49,7 +49,6 @@ public class Login_Form extends AppCompatActivity {
 
                 }
 
-
                 if (TextUtils.isEmpty(username.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter Username", Toast.LENGTH_LONG);
                     toast.show();
@@ -136,7 +135,9 @@ public class Login_Form extends AppCompatActivity {
 
 
             }
+
         });
+
     }
 
     public void viewregister(View view) {

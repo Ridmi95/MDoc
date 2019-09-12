@@ -35,14 +35,15 @@
     <!--android:paddingRight="@dimen/paddingLeft"-->
     <!--android:layout_marginTop="@dimen/text_margin"/>-->
     <!--name-->
+
     <EditText
         android:id="@+id/dtxtnic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/hintTitle"
+        android:layout_marginTop="@dimen/margin_top"
+        android:hint="@string/hint_national_identity_card"
         android:inputType=""
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingTop="@dimen/btnpaddingr"
@@ -56,9 +57,9 @@
         android:ems="10"
         android:hint="@string/hintFName"
         android:inputType=""
-        android:paddingTop="25dp"
         android:paddingLeft="@dimen/paddingLeft"
-        android:paddingRight="@dimen/paddingRight"/>
+        android:paddingTop="25dp"
+        android:paddingRight="@dimen/paddingRight" />
 
     <EditText
         android:id="@+id/dtxtlastname"
@@ -71,6 +72,7 @@
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingTop="25dp"
         android:paddingRight="@dimen/paddingRight" />
+
     <!--email-->
     <EditText
         android:id="@+id/dtxtemail"

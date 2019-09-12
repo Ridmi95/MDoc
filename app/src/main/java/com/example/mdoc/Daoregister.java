@@ -10,6 +10,7 @@ public class Daoregister {
     private  int contactnum;
     private  String password;
     private String Confirmpassword;
+    private String medicalregno;
 
     public Daoregister() {
     }
@@ -28,6 +29,16 @@ public class Daoregister {
         this.firstname = firstname;
         this.lastname = lastname;
         this.nic = nic;
+    }
+
+    //created an overload constructor by using first,last name, email, nic, phone, medregno by nishiki
+    public Daoregister(String firstname, String lastname, String email, int contactnum, String nic, String medicalregno){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.contactnum = contactnum;
+        this.nic = nic;
+        this.medicalregno = medicalregno;
     }
 
     public String getFirstname() {
@@ -92,5 +103,13 @@ public class Daoregister {
 
     public void setConfirmpassword(String confirmpassword) {
         Confirmpassword = confirmpassword;
+    }
+
+    public String getMedicalregno() {
+        return medicalregno;
+    }
+
+    public void setMedicalregno(String medicalregno) {
+        this.medicalregno = medicalregno;
     }
 }
