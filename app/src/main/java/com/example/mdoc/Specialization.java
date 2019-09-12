@@ -167,6 +167,8 @@ public class Specialization extends AppCompatActivity {
                 }
             });
 
+
+
             //deleting the user
             viewSpecialization.setOnClickListener(new View.OnClickListener() {
                 Toast toast;

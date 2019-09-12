@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="7"
-            android:hint="@string/user_name"
+            android:hint="Email"
 
             android:inputType="text"
             android:textSize="20sp" />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:layout_marginTop="@dimen/FNmarginTop"
+        android:layout_marginTop="20dp"
         >
 
         <EditText
@@ -107,6 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="Register"
+            android:onClick="reg"
             android:paddingLeft="20dp"
             android:textSize="20dp" />
 
