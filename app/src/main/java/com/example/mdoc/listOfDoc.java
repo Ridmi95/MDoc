@@ -38,7 +38,7 @@ public class listOfDoc extends AppCompatActivity {
 
         }else{
             while (data.moveToNext()){
-                thelist.add("Doctor Name:"+data.getString(0)+"\n");
+                thelist.add("Doctor Name:"+data.getString(1)+"\n");
 
                 ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,thelist);
                 listView.setAdapter(listAdapter);

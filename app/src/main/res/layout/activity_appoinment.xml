@@ -173,7 +173,7 @@
         >
 
 
-        <EditText
+        <!--<EditText
             android:id="@+id/datapickerappointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -181,7 +181,53 @@
             android:hint="@string/date"
             android:inputType="text"
 
-            android:textSize="@dimen/appdatetextsize" />
+            android:textSize="@dimen/appdatetextsize" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+
+            android:layout_marginTop="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtdate"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="7"
+                    android:hint="Date"
+
+                    android:textSize="20sp" />
+
+                <Button
+
+                    android:id="@+id/btndatepicker"
+                    android:layout_width="159dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/button_rounded"
+
+                    android:text="open date picker"
+                    android:textColor="@color/textIcon"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </com.google.android.material.textfield.TextInputLayout>
 
 
