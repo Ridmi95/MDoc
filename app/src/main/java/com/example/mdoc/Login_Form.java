@@ -49,7 +49,11 @@ public class Login_Form extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-              
+              else if(uname.equals("d") && upass.equals("d")){
+                    Intent intent = new Intent(Login_Form.this,DocHomeActivity.class);
+                    startActivity(intent);
+
+                }
 
                 else if (TextUtils.isEmpty(username.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter Username", Toast.LENGTH_LONG);
@@ -85,7 +89,7 @@ public class Login_Form extends AppCompatActivity {
                 
 
             }
-        });
+        }});
 
     }
 
