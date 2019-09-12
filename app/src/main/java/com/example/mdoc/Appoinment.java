@@ -24,7 +24,7 @@ import java.util.Locale;
 public class Appoinment extends AppCompatActivity {
 
     List<String> doctorName = new ArrayList<String>();
-    //DatePickerDialog datePickerDialog;
+
     DBconnection dBconnection;
     Spinner docspinner;
     Daoappointment Appoinment = new Daoappointment();
@@ -32,9 +32,7 @@ public class Appoinment extends AppCompatActivity {
     Date_appointment;
     Button btnaddapoointment,btnupdateappointment,btnviewappointment;
 
-    //DatePickerDialog dpd;
-    //String dateFinal;
-    //int startYear = 0, startMonth = 0, startDay = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,24 +55,7 @@ public class Appoinment extends AppCompatActivity {
 
 
 
-        /*Date_appointment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                final int year =calendar.get(Calendar.YEAR);
-                final int month =calendar.get(Calendar.MONTH);
-                final int day = calendar.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        Date_appointment.setText(day+"-"+month+1+"-"+year);
-                    }
-                },year,month,day);
-                datePickerDialog.show();
-            }
-        });*/
 
-        //dinuka
 
 
         doctorName.add("Namal");
@@ -156,37 +137,14 @@ public class Appoinment extends AppCompatActivity {
             }
         });
 
-        //dateFinal = todayDateString();
-       //Date your_date = new Date();
-        //Calendar cal = Calendar.getInstance();
-        //cal.setTime(your_date);
-        //startYear = cal.get(Calendar.YEAR);
-        //startMonth = cal.get(Calendar.MONTH);
-        //startDay = cal.get(Calendar.DAY_OF_MONTH);
+
+
+
 
 
     }
 
 
 
-
-
-
-    //date
-   /* public void press(View view) {
-        dpd = DatePickerDialog.newInstance(Appoinment.this, startYear, startMonth, startDay);
-        dpd.setOnDateSetListener(this);
-        dpd.show(getFragmentManager(), "startDatepickerdialog");
-    }*/
-
-
-
-    //public String todayDateString() {
-        //SimpleDateFormat dateFormat = new SimpleDateFormat(
-               // "dd/MM/yyyy", Locale.getDefault());
-
-        //return dateFormat.toString();
-
-    //}
 
 }

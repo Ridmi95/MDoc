@@ -36,7 +36,6 @@ public class Login_Form extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Toast toast;
 
                 String uname = username.getText().toString().trim();
@@ -49,13 +48,8 @@ public class Login_Form extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-              else if(uname.equals("d") && upass.equals("d")){
-                    Intent intent = new Intent(Login_Form.this,DocHomeActivity.class);
-                    startActivity(intent);
 
-                }
-
-                else if (TextUtils.isEmpty(username.getText().toString())) {
+                if (TextUtils.isEmpty(username.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter Username", Toast.LENGTH_LONG);
                     toast.show();
                 } else if (TextUtils.isEmpty(password.getText().toString())) {
@@ -66,30 +60,83 @@ public class Login_Form extends AppCompatActivity {
                     register.setEmail(username.getText().toString().trim());
                     register.setPassword(password.getText().toString().trim());
 
+                    Daoregister reg = dBconnection.checkLogin(register);
+                 //   Log.i("Type Login",reg.getType());
+                    if (reg != null) {
+                        if(reg.getType().equals("Customer")) {
+                            toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
+                            toast.show();
+                            Intent intent = new Intent(Login_Form.this, MainHome.class);
 
-                    if (dBconnection.checkLogin(register) == true) {
-                        toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
-                        toast.show();
-                        Intent intent = new Intent(Login_Form.this,MainHome.class);
+                            Log.i("cdscd", username.getText().toString().trim());
+                            SharedPreferences.Editor editor = getSharedPreferences("userPreference", 0).edit();
+                            editor.putString("userEmail", username.getText().toString());
+                            editor.commit();
+                            startActivity(intent);
+                        }
+                        else if(reg.getType().equals("Doctor")){
+                            toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
+                            toast.show();
+                            Intent intent = new Intent(Login_Form.this, DocHomeActivity.class);
+                            startActivity(intent);
 
-                        Log.i("cdscd",username.getText().toString().trim());
-                        SharedPreferences.Editor editor = getSharedPreferences("userPreference",0).edit();
-                        editor.putString("userEmail",username.getText().toString());
-                        editor.commit();
-                        startActivity(intent);
+                        }
 
-                    } else {
+                    } else  if(reg == null) {
                         toast = Toast.makeText(getApplicationContext(), "Error in login", Toast.LENGTH_LONG);
                         toast.show();
 
                     }
 
 
+                }
 
-                
+
+                // });
+
+                // }
+
+
+                //}
+
+
+//public void login(View view) {
+
+                //String uname,upass;
+                //Intent intent;
+
+                // uname = username.getText().toString();
+                //upass = password.getText().toString();
+
+                //if(uname.equals("admin") && upass.equals("admin"))
+                //{
+
+                //intent = new Intent(Login_Form.this, MainNavigationActivity.class);
+                //startActivity(intent);
+
+                //}else if(uname.equals("customer") && upass.equals("customer"))
+                // {
+                // intent = new Intent(this, MainHome.class);
+                // startActivity(intent);
+                //}else if(uname.equals("lab") && upass.equals("lab"))
+                //{
+                //intent = new Intent(this, reportMainja.class);
+                // startActivity(intent);
+                //}else if(uname.equals("doctor") && upass.equals("doctor"))
+                // {
+                //intent = new Intent(this, DocHomeActivity.class);
+                // startActivity(intent);
+                //}
+
+                // }
+
+
+//signup(View view)
+
 
             }
-        }});
+
+        });
 
     }
 
@@ -100,4 +147,9 @@ public class Login_Form extends AppCompatActivity {
     }
 
 
+    public void reg(View view) {
+
+        Intent intent = new Intent(this,register.class);
+        startActivity(intent);
+    }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.DropBoxManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -110,15 +111,18 @@ public class register extends AppCompatActivity {
                     register.setEmail(email_register.getText().toString().trim());
                     register.setContactnum(Integer.parseInt(mobile_register.getText().toString().trim()));
                     register.setPassword(password_register.getText().toString().trim());
-
+                    Log.i("Type",registertypespinner.getSelectedItem().toString().trim());
 
                     if (dBconnection.addregisterInfo(register) == true) {
                         toast = Toast.makeText(getApplicationContext(), " Successfully Registered", Toast.LENGTH_LONG);
                         toast.show();
+                        Intent intent = new Intent(register.this,Login_Form.class);
+                        startActivity(intent);
 
                     } else {
                         toast = Toast.makeText(getApplicationContext(), "Error in register", Toast.LENGTH_LONG);
                         toast.show();
+
 
                     }
                 }
@@ -135,8 +139,13 @@ public class register extends AppCompatActivity {
 
     public void register(View view) {
 
-        Intent intent = new Intent(this,Login_Form.class);
+
+    }
+
+    public void log(View view) {
+        Intent intent = new Intent(register.this,Login_Form.class);
         startActivity(intent);
+
     }
 }
 

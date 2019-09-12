@@ -47,7 +47,7 @@
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:background="@drawable/button_rounded"
-        android:onClick="add"
+        android:onClick="get"
         android:src="@color/colorPrimaryDark"
         android:text="@string/add_appointment"
         android:textColor="@color/textIcon"

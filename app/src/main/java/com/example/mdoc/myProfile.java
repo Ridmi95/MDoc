@@ -55,8 +55,6 @@ public class myProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast toast;
-                //validating the add specialization
-
 
 
                 if(TextUtils.isEmpty(myProfile_fristname.getText().toString()))
@@ -81,7 +79,48 @@ public class myProfile extends AppCompatActivity {
                     toast.show();
 
                 }
-                else{
+                else {
+                    /*myProfile.setFirstname(DatabaseContract.register.REGISTER_FIRSTNAME);
+                    myProfile.setLastname(DatabaseContract.register.REGISTER_LASTNAME);
+                  //  myProfile.setContactnum(Integer.parseInt(DatabaseContract.register.REGISTER_CONTACTNUM));
+                    myProfile.setEmail(DatabaseContract.register.REGISTER_EMAIL);
+
+                    Daoregister reg = dBconnection.updateProfile(myProfile);
+                    if(reg != null)
+                    {
+                        Log.i("Fname",reg.getFirstname());
+                        Log.i("Lname",reg.getLastname());
+                        Log.i("Email",reg.getEmail());
+                        Log.i("Mobile",String.valueOf(reg.getContactnum()));
+                        Log.i("Fname",reg.getFirstname());
+
+                        toast = Toast.makeText(getApplicationContext(),"Update Sucessfull",Toast.LENGTH_LONG);
+                        toast.show();
+                    }else
+                        {
+                            toast = Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG);
+                            toast.show();
+
+                        }*/
+
+                        myProfile.setFirstname(DatabaseContract.register.REGISTER_FIRSTNAME);
+                        myProfile.setLastname(DatabaseContract.register.REGISTER_LASTNAME);
+                        //myProfile.setContactnum(Integer.parseInt(DatabaseContract.register.REGISTER_CONTACTNUM));
+                        myProfile.setEmail(DatabaseContract.register.REGISTER_EMAIL);
+
+
+
+                            if (dBconnection.updateProfile(myProfile) > 0) {
+                                toast = Toast.makeText(getApplicationContext(), "Successfully Updated", Toast.LENGTH_LONG);
+                                toast.show();
+
+                            } else {
+                                toast = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+
+
+
 
 
                 }

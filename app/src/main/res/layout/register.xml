@@ -245,5 +245,41 @@
         android:textSize="@dimen/Btextsize"
         android:onClick="register"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Do you already have an account?"
+
+                android:textSize="20dp" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Login"
+                android:paddingLeft="20dp"
+                android:textSize="20dp"
+                android:onClick="log"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 </LinearLayout>
 
