@@ -55,7 +55,7 @@ public class Appoinment extends AppCompatActivity implements  View.OnClickListen
         problems_appointment = findViewById(R.id.txtproblemsappointment);
         //Date_appointment = findViewById(R.id.btndatepicker);
         btnaddapoointment = findViewById(R.id.btnaddappointment);
-        btnupdateappointment = findViewById(R.id.btnupdateappointment);
+        //btnupdateappointment = findViewById(R.id.btnupdateappointment);
         btnviewappointment = findViewById(R.id.Viewappointment);
 
 

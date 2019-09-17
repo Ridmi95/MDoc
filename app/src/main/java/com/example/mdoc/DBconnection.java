@@ -259,33 +259,29 @@ public class DBconnection extends SQLiteOpenHelper {
         return result;
     }
 
-    public long updateProfile(Daoregister register){
-        SQLiteDatabase sd = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getFirstname());
-        values.put(DatabaseContract.register.REGISTER_LASTNAME,register.getLastname());
-        values.put(DatabaseContract.register.REGISTER_EMAIL,register.getEmail());
-        values.put(DatabaseContract.register.REGISTER_CONTACTNUM,register.getContactnum());
+    public boolean updateProfile(Daoregister register){
+        SQLiteDatabase sd = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getFirstname());
+        contentValues.put(DatabaseContract.register.REGISTER_LASTNAME,register.getLastname());
+        contentValues.put(DatabaseContract.register.REGISTER_EMAIL,register.getEmail());
+        contentValues.put(DatabaseContract.register.REGISTER_CONTACTNUM,register.getContactnum());
 
-        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_NIC + " =? ",new String[] {register.getNic()});
+        long result = sd.update(DatabaseContract.register.TABLE_NAME,contentValues,DatabaseContract.register.REGISTER_NIC + " = ? ",new String[] {register.getNic()});
+
+        if (result > 0){
+            return  true;
+        }else {
+            return  false;
+        }
 
 
-        return result;
 
     }
 
-    public long updateAppointment(Daoappointment Appoinment){
-        SQLiteDatabase sd = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DatabaseContract.Appointment.APPOINTMRNT_PROBLEM,Appoinment.getProblems());
-        values.put(DatabaseContract.Appointment.APPOINTMENT_DATE,Appoinment.getDate());
 
-        long result = sd.update(DatabaseContract.Appointment.TABLE_NAME,values,DatabaseContract.Appointment.APPOINTMENT_EMAIL  + " =? ",new String[] {Appoinment.getEmail()});
 
-        return result;
-    }
-
-    /*public Daoregister updateProfile(Daoregister register)
+   /* public Daoregister updateProfile(Daoregister register)
     {
         SQLiteDatabase sd = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -369,6 +365,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
+    //view list of doctors
     public Cursor viewDataListofDoctors(){
 
         SQLiteDatabase sqldbl = this.getWritableDatabase();
@@ -390,13 +387,15 @@ public class DBconnection extends SQLiteOpenHelper {
         return result;
     }
 
-    /*public long deleteMyprofile(Daoregister register){
-       SQLiteDatabase sd =getWritableDatabase();
+    //delete myprofile
+    public long deleteMyprofile(Daoregister register) {
+        SQLiteDatabase sd = getWritableDatabase();
+        long result = sd.delete(DatabaseContract.register.TABLE_NAME,DatabaseContract.register.REGISTER_NIC + "=" +register.getNic(),null);
+        Log.i("Delete NIC",DatabaseContract.register.REGISTER_NIC);
+        Log.i("P",String.valueOf(register.getNic()));
+        return result;
 
-
-
-
-    }*/
+    }
 
     public List<Daoregister> getAllPaatients()
     {

@@ -212,17 +212,17 @@
 
                 <Button
 
-                    android:id="@+id/btndatepicker"
-                    android:layout_width="159dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/button_rounded"
+                android:id="@+id/btndatepicker"
+                android:layout_width="159dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button_rounded"
 
-                    android:text="open date picker"
-                    android:textColor="@color/textIcon"
-                    android:textSize="20sp" />
+                android:text="open date picker"
+                android:textColor="@color/textIcon"
+                android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -245,7 +245,7 @@
         android:textSize="@dimen/Btextsize"
         />
 
-    <Button
+    <!--<Button
         android:id="@+id/btnupdateappointment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Bheight"
@@ -255,7 +255,7 @@
         android:background="@drawable/button_rounded"
         android:text="@string/update"
         android:textColor="@color/textIcon"
-        android:textSize="@dimen/Btextsize" />
+        android:textSize="@dimen/Btextsize" />-->
 
     <Button
         android:id="@+id/Viewappointment"
@@ -270,4 +270,17 @@
         android:textColor="@color/textIcon"
         android:textSize="20sp"
         />
+
+    <!--<Button
+        android:id="@+id/deleteappointment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Bheight"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/button_rounded"
+        android:text="Delete Appointment"
+        android:textColor="@color/textIcon"
+        android:textSize="20sp"
+        />-->
 </LinearLayout>
