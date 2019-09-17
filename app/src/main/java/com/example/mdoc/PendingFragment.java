@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class PendingFragment extends Fragment {
     private String names[] = {"Doctor 1","Doctor 2"};
     private String docNic[] = {"1","2"};
     private static final String TAG = "PendingFragment";
+    private Button searchPendingDoctors;
     private DBconnection dBconnection;
 
     View rootView;
@@ -75,6 +77,10 @@ public class PendingFragment extends Fragment {
                 customDialog("Pending Doctors","Do you want to  " + names[position] + " ?", "cancelMethod1","okMethod1");
             }
         });
+
+
+
+
     }
 
     private void declineMethod(){

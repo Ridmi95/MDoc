@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,12 +25,18 @@ public class AdminViewSpecialization extends AppCompatActivity {
     private ListView spcializationList;
     private DBconnection dBconnection = new DBconnection(this);
     private String[] specialList,DepartmentList,keyList;
+    private Button searchSpecialzation;
+    private EditText specializationSearchId;
     private static final String TAG = "Admin View";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_specialization);
+
+
+        searchSpecialzation = findViewById(R.id.btnSearchSpecialzation);
+        specializationSearchId = findViewById(R.id.specializationSearchKey);
 
         spcializationList = findViewById(R.id.specializationList);
         List<DaoSpecialization> specializationList = dBconnection.getAllSpecialization();
@@ -65,7 +73,37 @@ public class AdminViewSpecialization extends AppCompatActivity {
             }
         });
 
+
+        searchSpecialzation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String searchkey = specializationSearchId.getText().toString().trim();
+
+                List<DaoSpecialization> specializationList = dBconnection.getSearchedSpecialization(searchkey);
+                specialList = new String[specializationList.size()];
+                DepartmentList = new String[specializationList.size()];
+                keyList = new String[specializationList.size()];
+
+                for(int i = 0; i < specializationList.size(); i++)
+                {
+                    String splist = specializationList.get(i).getSpecializationName();
+                    String spDep = specializationList.get(i).getSpecializationDepartment();
+                    String key = String.valueOf(specializationList.get(i).getId());
+                    specialList[i] = splist;
+                    DepartmentList[i] = spDep;
+                    keyList[i] = key;
+                    Log.i("data",splist);
+                }
+
+                AdminViewSpecialization.MyAdapter adapter = new AdminViewSpecialization.MyAdapter(getApplicationContext(),specialList,DepartmentList,keyList);
+                spcializationList.setAdapter(adapter);
+
+            }
+        });
+
     }
+    //method to search specialization
+
 
 
     class MyAdapter extends ArrayAdapter<String>
