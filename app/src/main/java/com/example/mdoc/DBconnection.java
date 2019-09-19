@@ -48,7 +48,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
        
 
-        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " (" + DatabaseContract.Specialization.SPECIALIZATION_KEY + " INTEGER PRIMARY KEY,"
+        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " (" + DatabaseContract.Specialization.SPECIALIZATION_KEY + "INTEGER PRIMARY KEY,"
 
                                             + DatabaseContract.Specialization.SPECIALIZATION_NAME + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT + " TEXT, "
@@ -59,15 +59,18 @@ public class DBconnection extends SQLiteOpenHelper {
 
 
         String SQL_CREATE_REGISTER = "CREATE TABLE " + DatabaseContract.register.TABLE_NAME +"("
-                                      +DatabaseContract.register.REGISTER_FIRSTNAME +" TEXT, "
-                                      +DatabaseContract.register.REGISTER_LASTNAME  + " TEXT, "
-                                      +DatabaseContract.register.REGISTER_TYPE  + " TEXT, "
-                                      +DatabaseContract.register.REGISTER_NIC   + " TEXT PRIMARY KEY, "
-                                      +DatabaseContract.register.REGISTER_EMAIL  + " TEXT,"
-                                      +DatabaseContract.register.REGISTER_PASSWORD + " TEXT,"
-                                      +DatabaseContract.register.REGISTER_CONTACTNUM +" TEXT,"
-                                      +DatabaseContract.register.REGISTER_REGISTRATIONNO +" TEXT,"
-                                      +DatabaseContract.register.REGISTER_STATUS +" TEXT" + ")";
+                +DatabaseContract.register.REGISTER_FIRSTNAME +" TEXT, "
+                +DatabaseContract.register.REGISTER_LASTNAME  + " TEXT, "
+                +DatabaseContract.register.REGISTER_TYPE  + " TEXT, "
+                +DatabaseContract.register.REGISTER_NIC   + " TEXT PRIMARY KEY, "
+                +DatabaseContract.register.REGISTER_EMAIL  + " TEXT,"
+                +DatabaseContract.register.REGISTER_PASSWORD + " TEXT,"
+                +DatabaseContract.register.REGISTER_CONTACTNUM +" TEXT,"
+                +DatabaseContract.register.REGISTER_REGISTRATIONNO +" TEXT,"
+                +DatabaseContract.register.REGISTER_SPEC +" TEXT,"
+                +DatabaseContract.register.REGISTER_QUAL +" TEXT,"
+                +DatabaseContract.register.REGISTER_STATUS +" TEXT"
+                + ")";
 
         sqLiteDatabase.execSQL(SQL_CREATE_REGISTER);
 

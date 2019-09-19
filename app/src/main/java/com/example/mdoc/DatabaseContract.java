@@ -59,6 +59,8 @@ public final class DatabaseContract {
         public static String REGISTER_PASSWORD = "password";
         public static String REGISTER_REGISTRATIONNO = "registrationno";
         public static String REGISTER_STATUS = "status";
+        public static String REGISTER_SPEC = "spec";
+        public static String REGISTER_QUAL = "qual";
 
 
     }

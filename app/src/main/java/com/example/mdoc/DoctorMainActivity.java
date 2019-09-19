@@ -5,16 +5,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorMainActivity extends AppCompatActivity {
 
     DBconnection dbcon = new DBconnection(this);
     EditText txtfname, txtlastname, txtemail, txtxphone, txtmedreg, txtnic;
     Button btnupdate;
+    private Spinner specSpinner;
     Daoregister register = new Daoregister();
+    private List<String> spec = new ArrayList<String>();
     String email;
     SharedPreferences pref;
 
@@ -22,6 +29,20 @@ public class DoctorMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        spec.add("cardiologist");
+        spec.add("gynaecologist");
+        spec.add("neurologist");
+        spec.add("paediatrician");
+        spec.add("orthopedist");
+
+        ArrayAdapter<String> specadapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,spec);
+
+        specadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        Spinner sItems1 = findViewById(R.id.spinnerspec);
+        sItems1.setAdapter(specadapter);
 
         pref = getApplication().getSharedPreferences("doctorPreference",0);
         SharedPreferences.Editor editor = pref.edit();
