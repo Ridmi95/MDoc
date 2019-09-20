@@ -15,7 +15,7 @@ public class DocHomeActivity extends AppCompatActivity {
 
     public void myPatients(View v){
 
-        Intent intent = new Intent(this, MyPatientsActivity.class);
+        Intent intent = new Intent(this, Doc_Patients_list.class);
         startActivity(intent);
     }
 
@@ -25,9 +25,9 @@ public class DocHomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void profile(View v){
+    public void update(View v){
 
-        Intent intent = new Intent(this, DocProfile.class);
+        Intent intent = new Intent(this, DoctorMainActivity.class);
         startActivity(intent);
     }
 }

@@ -11,6 +11,27 @@ public class Daoregister {
     private  String password;
     private String Confirmpassword;
     private String medicalregno;
+    private String spec;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
+
+    public String getSpec() {
+        return spec;
+    }
+
+    public void setSpec(String spec) {
+        this.spec = spec;
+    }
+
+
 
     public Daoregister() {
     }

@@ -35,7 +35,6 @@
     <!--android:paddingRight="@dimen/paddingLeft"-->
     <!--android:layout_marginTop="@dimen/text_margin"/>-->
     <!--name-->
-
     <EditText
         android:id="@+id/dtxtnic"
         android:layout_width="match_parent"
@@ -124,8 +123,33 @@
         android:inputType=""
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingRight="@dimen/paddingRight" />
-    <!--pw-->
+    <!--spec-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="none"
+            android:paddingLeft="@dimen/btnpaddingl"
+            android:paddingTop="25dp"
+            android:textSize="@dimen/fab_margin"
+            android:textStyle="bold"
+            android:text="@string/Specialization" />
+
+        <Spinner
+            android:id="@+id/spinnerspec"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintNumber"
+            android:inputType=""
+            android:paddingTop="25dp" />
+    </LinearLayout>
 
 
     <LinearLayout

@@ -41,8 +41,8 @@ public class MyPlacesOfPractice extends AppCompatActivity {
         } else {
 
             while (data.moveToNext()) {
-                PatientList.add("Hospital Name: "+data.getString(2)+ "\n"+"Phone number: "+data.getString(4)
-                + "\n"+"Problem: "+data.getString(5)+"\n"+ "Date: "+data.getString(6));
+                PatientList.add("Hospital Name: "+data.getString(1)+ "\n"+"Address: "+data.getString(2)
+                + "\n"+"Contact number: "+data.getString(3)+"\n"+ "Day: "+data.getString(4)+"\n"+ "Time: "+data.getString(5));
 
 
                 ListAdapter listadapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,PatientList);

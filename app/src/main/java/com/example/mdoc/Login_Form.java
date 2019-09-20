@@ -78,6 +78,9 @@ public class Login_Form extends AppCompatActivity {
                             toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(Login_Form.this, DocHomeActivity.class);
+                            SharedPreferences.Editor editor = getSharedPreferences("userPreference", 0).edit();
+                            editor.putString("userEmail", username.getText().toString());
+                            editor.commit();
                             startActivity(intent);
 
                         }
