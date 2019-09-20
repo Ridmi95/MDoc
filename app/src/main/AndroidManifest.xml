@@ -21,16 +21,12 @@
         <activity android:name=".reportMainja" />
         <activity android:name=".DoctorMainActivity" />
         <activity android:name=".DocHomeActivity" />
-        <activity
-            android:name=".MyPatientsActivity"
-            android:label="@string/title_activity_my_patients"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Doc_Patients_list"/>
         <activity
             android:name=".MyPlacesOfPractice"
             android:label="@string/title_activity_my_places_of_practice"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddPlaces" />
-        <activity android:name=".DocProfile" />
         <activity android:name=".QualificationActivity" />
         <activity android:name=".Appoinment" />
         <activity android:name=".Specialization" />

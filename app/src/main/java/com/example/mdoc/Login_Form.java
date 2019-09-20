@@ -49,7 +49,6 @@ public class Login_Form extends AppCompatActivity {
 
                 }
 
-
                 if (TextUtils.isEmpty(username.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter Username", Toast.LENGTH_LONG);
                     toast.show();
@@ -79,6 +78,9 @@ public class Login_Form extends AppCompatActivity {
                             toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(Login_Form.this, DocHomeActivity.class);
+                            SharedPreferences.Editor editor = getSharedPreferences("userPreference", 0).edit();
+                            editor.putString("userEmail", username.getText().toString());
+                            editor.commit();
                             startActivity(intent);
 
                         }
@@ -136,7 +138,9 @@ public class Login_Form extends AppCompatActivity {
 
 
             }
+
         });
+
     }
 
     public void viewregister(View view) {

@@ -10,6 +10,7 @@ import android.util.Log;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteStatement;
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
@@ -27,24 +28,30 @@ public class DBconnection extends SQLiteOpenHelper {
    //     super(context, DATABASE_NAME, null, 2);
 
     public DBconnection(Context context) {
-        super(context, DATABASE_NAME, null, 4);
+        super(context, DATABASE_NAME, null, 6);
 
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+        //place of practice
         String CREATE_TABLE_POP ="CREATE TABLE "
                 + DatabaseContract.Entry.table_name + "(" +
-                DatabaseContract.Entry.col_1+ " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                DatabaseContract.Entry.col_2 + " TEXT," +
-                DatabaseContract.Entry.col_3 + " TEXT," +
-                DatabaseContract.Entry.col_4 + " TEXT," +
-                DatabaseContract.Entry.col_5 + " TEXT," +
-                DatabaseContract.Entry.col_6 + " TEXT" +")";
+                DatabaseContract.Entry.col_1+ " INTEGER PRIMARY KEY AUTOINCREMENT," + //id
+                DatabaseContract.Entry.col_2 + " TEXT," + //hopitalname
+                DatabaseContract.Entry.col_3 + " TEXT," + //address
+                DatabaseContract.Entry.col_4 + " TEXT," + //contact number
+                DatabaseContract.Entry.col_5 + " TEXT," + //day
+                DatabaseContract.Entry.col_6 + " TEXT" +")"; //time
 
         sqLiteDatabase.execSQL(CREATE_TABLE_POP);
 
-        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " (" + DatabaseContract.Specialization.SPECIALIZATION_KEY + " INTEGER PRIMARY KEY,"
+
+       
+
+        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " (" + DatabaseContract.Specialization.SPECIALIZATION_KEY + "INTEGER PRIMARY KEY,"
+
                                             + DatabaseContract.Specialization.SPECIALIZATION_NAME + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION + " TEXT" + ");";
@@ -54,15 +61,17 @@ public class DBconnection extends SQLiteOpenHelper {
 
 
         String SQL_CREATE_REGISTER = "CREATE TABLE " + DatabaseContract.register.TABLE_NAME +"("
-                                      +DatabaseContract.register.REGISTER_FIRSTNAME +" TEXT, "
-                                      +DatabaseContract.register.REGISTER_LASTNAME  + " TEXT, "
-                                      +DatabaseContract.register.REGISTER_TYPE  + " TEXT, "
-                                      +DatabaseContract.register.REGISTER_NIC   + " TEXT PRIMARY KEY, "
-                                      +DatabaseContract.register.REGISTER_EMAIL  + " TEXT,"
-                                      +DatabaseContract.register.REGISTER_PASSWORD + " TEXT,"
-                                      +DatabaseContract.register.REGISTER_CONTACTNUM +" TEXT,"
-                                      +DatabaseContract.register.REGISTER_REGISTRATIONNO +" TEXT,"
-                                      +DatabaseContract.register.REGISTER_STATUS +" TEXT" + ")";
+                +DatabaseContract.register.REGISTER_FIRSTNAME +" TEXT, "
+                +DatabaseContract.register.REGISTER_LASTNAME  + " TEXT, "
+                +DatabaseContract.register.REGISTER_TYPE  + " TEXT, "
+                +DatabaseContract.register.REGISTER_NIC   + " TEXT PRIMARY KEY, "
+                +DatabaseContract.register.REGISTER_EMAIL  + " TEXT,"
+                +DatabaseContract.register.REGISTER_PASSWORD + " TEXT,"
+                +DatabaseContract.register.REGISTER_CONTACTNUM +" TEXT,"
+                +DatabaseContract.register.REGISTER_REGISTRATIONNO +" TEXT,"
+                +DatabaseContract.register.REGISTER_SPEC +" TEXT,"
+                +DatabaseContract.register.REGISTER_STATUS +" TEXT"
+                + ")";
 
         sqLiteDatabase.execSQL(SQL_CREATE_REGISTER);
 
@@ -73,6 +82,16 @@ public class DBconnection extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_LOGIN);
 
+
+        /*-------------------------LAB REPORT---------------------------*/
+
+        String SQL_CREATE_LAB = " CREATE TABLE " +DatabaseContract.lab.TABLE_NAME+ " ( "
+                +DatabaseContract.lab.LAB_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                +DatabaseContract.lab.LAB_NAME+" VARCHAR, "+DatabaseContract.lab.LAB_AGE+" VARCHAR, "+DatabaseContract.lab.LAB_IMAGE+ " BLOB "+" ) ";
+
+//        sqLiteDatabase.execSQL(SQL_CREATE_LAB);
+
+/***************************************Appointment Table ********************/
         String SQL_CREATE_APPOINTMENT = " CREATE TABLE " +DatabaseContract.Appointment.TABLE_NAME +"("
                                    +DatabaseContract.Appointment._ID + " INTEGER PRIMARY KEY,"
                                    +DatabaseContract.Appointment.APPOINTMENT_DOCTORNAME +" TEXT,"
@@ -83,6 +102,7 @@ public class DBconnection extends SQLiteOpenHelper {
                                    +DatabaseContract.Appointment.APPOINTMENT_DATE +" TEXT" + ")";
 
         sqLiteDatabase.execSQL(SQL_CREATE_APPOINTMENT);
+
 
     }
     //
@@ -114,15 +134,39 @@ public class DBconnection extends SQLiteOpenHelper {
     }
 
     //returning information from the database
-    public Cursor viewData(){
+    public Cursor ViewData(){
     SQLiteDatabase sqldb = this.getWritableDatabase() ;
     Cursor result = sqldb.rawQuery("SELECT * FROM "+DatabaseContract.Entry.table_name, null);
 
     return result;
 }
 
+//view patients data
+    public Cursor ViewPatientsData(){
+        SQLiteDatabase sqldb = this.getWritableDatabase() ;
+        Cursor result = sqldb.rawQuery("SELECT * FROM "+DatabaseContract.Appointment.TABLE_NAME, null);
+
+        return result;
+    }
+//delete POP details
+
+ //update profile
+    public void updateProfileDetails(Daoregister registerUpdate){
+        SQLiteDatabase sqldb = getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseContract.register.REGISTER_FIRSTNAME, registerUpdate.getFirstname());
+        values.put(DatabaseContract.register.REGISTER_LASTNAME, registerUpdate.getLastname());
+        values.put(DatabaseContract.register.REGISTER_EMAIL, registerUpdate.getEmail());
+        values.put(DatabaseContract.register.REGISTER_CONTACTNUM, registerUpdate.getContactnum());
+        values.put(DatabaseContract.register.REGISTER_REGISTRATIONNO, registerUpdate.getMedicalregno());
+
+//        String updateQuery = "UPDATE " +DatabaseContract.register.TABLE_NAME + " SET " + DatabaseContract.register.REGISTER_FIRSTNAME + " = '" + registerUpdate.getFirstname() +
+
+        sqldb.update(DatabaseContract.register.TABLE_NAME, values, "nic = ?", null);
 
 
+    }
 
     public long addNewSpecialization(DaoSpecialization specialization)
     {
@@ -279,28 +323,35 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
+    public long updateDoctor(Daoregister reg){
+        SQLiteDatabase sd = getWritableDatabase();
+        ContentValues val = new ContentValues();
+
+        val.put(DatabaseContract.register.REGISTER_NIC, reg.getNic());
+        val.put(DatabaseContract.register.REGISTER_FIRSTNAME, reg.getFirstname());
+        val.put(DatabaseContract.register.REGISTER_LASTNAME, reg.getLastname());
+        val.put(DatabaseContract.register.REGISTER_EMAIL, reg.getEmail());
+        val.put(DatabaseContract.register.REGISTER_CONTACTNUM, reg.getContactnum());
+        val.put(DatabaseContract.register.REGISTER_REGISTRATIONNO,reg.getMedicalregno());
+        val.put(DatabaseContract.register.REGISTER_SPEC,reg.getSpec());
+        val.put(DatabaseContract.register.REGISTER_STATUS, reg.getStatus());
+
+        long result = sd.update(DatabaseContract.register.TABLE_NAME,val,DatabaseContract.register.REGISTER_NIC + " =? ",new String[] {reg.getNic()});
 
 
-   /* public Daoregister updateProfile(Daoregister register)
-    {
+        return result;
+
+    }
+
+    public long updateAppointment(Daoappointment Appoinment){
         SQLiteDatabase sd = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DatabaseContract.register.REGISTER_FIRSTNAME,register.getFirstname());
-        values.put(DatabaseContract.register.REGISTER_LASTNAME,register.getLastname());
-        values.put(DatabaseContract.register.REGISTER_EMAIL,register.getEmail());
-        values.put(DatabaseContract.register.REGISTER_CONTACTNUM,register.getContactnum());
+        values.put(DatabaseContract.Appointment.APPOINTMRNT_PROBLEM,Appoinment.getProblems());
+        values.put(DatabaseContract.Appointment.APPOINTMENT_DATE,Appoinment.getDate());
 
-        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_NIC + " =? " ,new String[] {register.getNic()});
-        Daoregister reg = new Daoregister();
-        reg.setFirstname(DatabaseContract.register.REGISTER_FIRSTNAME);
-        reg.setLastname(DatabaseContract.register.REGISTER_LASTNAME);
-        reg.setContactnum(Integer.parseInt(DatabaseContract.register.REGISTER_CONTACTNUM));
-        reg.setEmail(DatabaseContract.register.REGISTER_EMAIL);
-
-        return reg;
-    }*/
-
-    //checklogin-login form
+        long result = sd.update(DatabaseContract.Appointment.TABLE_NAME,values,DatabaseContract.Appointment.APPOINTMENT_EMAIL  + " =? ",new String[] {Appoinment.getEmail()});
+        return result;
+    }
 
     public Daoregister checkLogin(Daoregister daoregister)
     {
@@ -365,7 +416,33 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
-    //view list of doctors
+
+    public Daoregister getDocDetails(String userEmail)
+    {
+        SQLiteDatabase sql = getReadableDatabase();
+        String[] projection = {DatabaseContract.register.REGISTER_NIC,DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME,DatabaseContract.register.REGISTER_EMAIL,DatabaseContract.register.REGISTER_CONTACTNUM};
+        Cursor cursor = sql.query(DatabaseContract.register.TABLE_NAME,projection,DatabaseContract.register.REGISTER_EMAIL + " =? ",new String[]{userEmail},null,null,null);
+        Daoregister userProfile = new Daoregister();
+
+        while (cursor.moveToNext()){
+            String nic = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_NIC));
+            String fname = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_FIRSTNAME));
+            String lname = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_LASTNAME));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_EMAIL));
+            String mobile = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.register.REGISTER_CONTACTNUM));
+
+            userProfile.setFirstname(fname);
+            userProfile.setLastname(lname);
+            userProfile.setEmail(email);
+            userProfile.setNic(nic);
+            userProfile.setContactnum(Integer.parseInt(mobile));
+
+        }
+
+        return userProfile;
+
+    }
+
     public Cursor viewDataListofDoctors(){
 
         SQLiteDatabase sqldbl = this.getWritableDatabase();
@@ -477,13 +554,72 @@ public class DBconnection extends SQLiteOpenHelper {
         long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_FIRSTNAME + " LIKE " + name +"%",null);
         return result;
     }
+  /*----------------------------------------- LAB REPORT DB -----------------------------------------------------*/
+
+
+
+
+    //insertData
+    public void insertData(String name, String age, byte[] image){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to insert record in database table
+        String sql = "INSERT INTO RECORD VALUES(NULL, ?, ?, ?)";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, name);
+        statement.bindString(2, age);
+        statement.bindBlob(3, image);
+
+
+        statement.executeInsert();
+    }
+
+    //updateData
+    public void updateData(String name, String age, byte[] image, int id){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to update record
+        String sql = "UPDATE RECORD SET name=?, age=?, image=? WHERE id=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1, name);
+        statement.bindString(2, age);
+
+        statement.bindBlob(3, image);
+        statement.bindDouble(4, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    //deleteData
+    public void deleteData(int id){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to delete record using id
+        String sql = "DELETE FROM RECORD WHERE id=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public Cursor getData(String sql){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, null);
+    }
 
 
 /*
 *     public long deleteUser(int position)
     {
         SQLiteDatabase sd = getWritableDatabase();
-        long result = sd.delete(DB_Contract.UserMaster.TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
+        long result = sd.delete(DB_Contract.User
+        .TABLE_NAME,DB_Contract.UserMaster._ID + " = " + (position + 1),null);
         return result;
     }
 

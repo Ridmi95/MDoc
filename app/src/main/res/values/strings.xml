@@ -110,6 +110,8 @@
     <string name="specialkey">SpecialKey</string>
     <string name="specialization_key">Specialization Key</string>
     <string name="department">Department</string>
+    <string name="hint_national_identity_card">National Identity Card</string>
+    <string name="Specialization">Specialization</string>
 
 
 </resources>

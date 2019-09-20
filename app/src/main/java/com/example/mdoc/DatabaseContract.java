@@ -2,6 +2,8 @@ package com.example.mdoc;
 
 import android.provider.BaseColumns;
 
+import java.sql.Blob;
+
 public final class DatabaseContract {
 
     private DatabaseContract() {
@@ -20,20 +22,6 @@ public final class DatabaseContract {
         public static final String col_5 = "Date";
         public static final String col_6 = "Time";
 
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-
-//        public static final String table_name2 = "Doctor";
-//
-//        public static final String col_2_1 = "NIC";
-//        public static final String col_2_2 = "Title";
-//        public static final String col_2_3 = "First_Name";
-//        public static final String col_2_4 = "Last_Name";
-//        public static final String col_2_5 = "Email";
-//        public static final String col_2_6 = "Contact_Number";
-//        public static final String col_2_7 = "RegNo";
     }
     public static class Specialization
     {
@@ -57,6 +45,8 @@ public final class DatabaseContract {
         public static String REGISTER_PASSWORD = "password";
         public static String REGISTER_REGISTRATIONNO = "registrationno";
         public static String REGISTER_STATUS = "status";
+        public static String REGISTER_SPEC = "spec";
+        public static String REGISTER_QUAL = "qual";
 
 
     }
@@ -93,6 +83,14 @@ public final class DatabaseContract {
 
 
 
+    }
+    //Lab table
+    public static class lab{
+        public static String TABLE_NAME = "RECORD";
+        public static String LAB_KEY = "id";
+        public static String LAB_NAME = "name";
+        public static String LAB_AGE = "age";
+        public static String LAB_IMAGE = "image";
     }
 
 }
