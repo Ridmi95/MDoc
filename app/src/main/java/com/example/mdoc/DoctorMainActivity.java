@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,9 +47,15 @@ public class DoctorMainActivity extends AppCompatActivity {
         Spinner sItems1 = findViewById(R.id.spinnerspec);
         sItems1.setAdapter(specadapter);
 
-        pref = getApplication().getSharedPreferences("doctorPreference",0);
+//        pref = getApplication().getSharedPreferences("doctorPreference",0);
+//        SharedPreferences.Editor editor = pref.edit();
+//        email = pref.getString("doctorEmail",null);
+
+        pref = getApplication().getSharedPreferences("userPreference",0);
         SharedPreferences.Editor editor = pref.edit();
-        email = pref.getString("doctorEmail",null);
+        email = pref.getString("userEmail",null);
+
+        Log.i("Email",email);
 
         txtnic = findViewById(R.id.dtxtnic);
         txtfname = findViewById(R.id.dtxtfname);
@@ -54,30 +63,43 @@ public class DoctorMainActivity extends AppCompatActivity {
         txtemail = findViewById(R.id.dtxtemail);
         txtxphone = findViewById(R.id.dtxtphone);
         txtmedreg = findViewById(R.id.dtxtmedreg);
+        specSpinner = findViewById(R.id.spinnerspec);
+        btnupdate = findViewById(R.id.button);
 
-        register = dbcon.getProfileDetails(email);
+        register = dbcon.getDocDetails(email);
+
         txtnic.setText(register.getNic());
         txtfname.setText(register.getFirstname());
         txtlastname.setText(register.getLastname());
         txtemail.setText(register.getEmail());
         txtxphone.setText(String.valueOf(register.getContactnum()));
         txtmedreg.setText(register.getMedicalregno());
+        specSpinner.getSelectedItem().toString().trim();
+        
+
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                register.setNic(txtnic.getText().toString());
+                register.setFirstname(txtfname.getText().toString());
+                register.setLastname(txtlastname.getText().toString());
+                register.setEmail(txtemail.getText().toString());
+                register.setContactnum(Integer.parseInt(txtxphone.getText().toString()));
+                register.setMedicalregno(txtmedreg.getText().toString());
+                register.setStatus("Pending");
+
+                if (dbcon.updateDoctor(register) > 0) {
+                    Toast.makeText(getApplicationContext(), "Successfully Updated", Toast.LENGTH_LONG).show();
 
 
-//        btnupdate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                register.setFirstname(txtfname.getText().toString());
-//                register.setLastname(txtlastname.getText().toString());
-//                register.setEmail(txtemail.getText().toString());
-//                register.setContactnum((Integer.parseInt(txtxphone.getText().toString())));
-//                register.setMedicalregno(txtmedreg.getText().toString());
-//
-//                dbcon.updateProfileDetails(register);
-//                Toast.makeText(DoctorMainActivity.this, "Data updated successfully!", Toast.LENGTH_LONG).show();
-//            }
-//        });
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+
     }
 
     public void submit(View v){

@@ -20,8 +20,8 @@ public class Doc_Patients_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.view_patients_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
 
         ListView listView = (ListView) findViewById(R.id.listviewPatients);

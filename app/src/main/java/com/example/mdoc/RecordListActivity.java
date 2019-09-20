@@ -43,14 +43,14 @@ public class RecordListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_list);
+        setContentView(R.layout.lab_activity_record_list);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Report List");
 
         mListView = findViewById(R.id.listView);
         mList = new ArrayList<>();
-        mAdapter = new RecordListAdapter(this, R.layout.row, mList);
+        mAdapter = new RecordListAdapter(this, R.layout.lab_row, mList);
         mListView.setAdapter(mAdapter);
 
         //get all data from sqlite

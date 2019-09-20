@@ -31,7 +31,7 @@ public class listOfDoc extends AppCompatActivity {
         dBconnection = new DBconnection(this);
 
         final ArrayList<String> thelist = new ArrayList<>();
-        Cursor data = dBconnection.viewData();
+        Cursor data = dBconnection.ViewData();
 
         if(data.getCount() == 0){
             Toast.makeText(this,"The database is Empty",Toast.LENGTH_LONG).show();
