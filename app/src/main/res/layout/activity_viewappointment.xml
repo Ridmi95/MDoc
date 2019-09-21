@@ -29,10 +29,11 @@
 
     <ListView
         android:id="@+id/viewapp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="150dp">
 
 
-        >
+    </ListView>
 
 </LinearLayout>

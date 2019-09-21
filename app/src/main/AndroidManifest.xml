@@ -20,6 +20,7 @@
         <activity android:name=".view" />
         <activity android:name=".reportMainja" />
         <activity android:name=".DoctorMainActivity" />
+        <activity android:name=".RecordListActivity"/>
         <activity android:name=".DocHomeActivity" />
         <activity android:name=".Doc_Patients_list"/>
         <activity
@@ -31,6 +32,7 @@
         <activity android:name=".Appoinment" />
         <activity android:name=".Specialization" />
         <activity android:name=".Patient" />
+        <activity android:name=".MainLabActivity"/>
         <activity android:name=".Doctor" />
         <activity
             android:name=".MainNavigationActivity"

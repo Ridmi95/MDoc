@@ -20,6 +20,7 @@ public class Doctor extends AppCompatActivity {
     String names[] = {"Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4","Doctor 1","Doctor 2","Doctor 3","Doctor 4"};
     ImageButton patient,pending,specialization;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,11 @@ public class Doctor extends AppCompatActivity {
 
         //doctorList.setOnItemClickListener();
     }
+
+
+
+    //search pending doctor method
+
 
 
     class MyAdapter extends ArrayAdapter<String>
