@@ -17,7 +17,7 @@ public class myProfile extends AppCompatActivity {
     EditText myProfile_fristname,myProfile_lastname,myProfile_email,myProfile_nic,myProfile_mobile;
     DBconnection dBconnection;
     Daoregister myProfile = new Daoregister();
-    Button btnupdate,btndelete,btnsave;
+    Button btnupdate,btndelete;
     Intent intent;
     String email;
     SharedPreferences pref;
@@ -103,14 +103,17 @@ public class myProfile extends AppCompatActivity {
 
                         }*/
 
-                        myProfile.setFirstname(DatabaseContract.register.REGISTER_FIRSTNAME);
-                        myProfile.setLastname(DatabaseContract.register.REGISTER_LASTNAME);
-                        myProfile.setContactnum(Integer.parseInt(DatabaseContract.register.REGISTER_CONTACTNUM));
-                        myProfile.setEmail(DatabaseContract.register.REGISTER_EMAIL);
+
+                        myProfile.setFirstname(myProfile_fristname.getText().toString().trim());
+                        myProfile.setLastname(myProfile_lastname.getText().toString().trim());
+                        myProfile.setContactnum(Integer.parseInt(myProfile_mobile.getText().toString().trim()));
+                        myProfile.setEmail(myProfile_email.getText().toString().trim());
+                        myProfile.setNic(myProfile_nic.getText().toString().trim());
 
 
 
-                            if (dBconnection.updateProfile(myProfile) > 0) {
+
+                            if (dBconnection.updateProfile(myProfile)) {
                                 toast = Toast.makeText(getApplicationContext(), "Successfully Updated", Toast.LENGTH_LONG);
                                 toast.show();
 
@@ -124,6 +127,41 @@ public class myProfile extends AppCompatActivity {
 
 
                 }
+
+
+
+            }
+        });
+
+        //delete myprofile
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            Toast toast;
+            @Override
+            public void onClick(View view) {
+
+                try {
+
+                    myProfile_nic.setText(myProfile.getNic());
+
+                    if (dBconnection.deleteMyprofile(myProfile) > 0) {
+
+                        toast = Toast.makeText(getApplicationContext(), "Successfully Delete", Toast.LENGTH_LONG);
+                        toast.show();
+                        Intent intent = new Intent(myProfile.this,Login_Form.class);
+                        startActivity(intent);
+
+
+                    } else {
+                        toast = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG);
+                        toast.show();
+
+                    }
+                }catch (NumberFormatException ex)
+                {
+                    toast = Toast.makeText(getApplicationContext(),"Please Enter Valid NIC",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
 
             }
         });

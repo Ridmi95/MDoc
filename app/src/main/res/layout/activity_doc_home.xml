@@ -87,7 +87,7 @@
             android:contentDescription="@string/btnProfile"/>
 
         <Button
-            android:onClick="profile"
+            android:onClick="update"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:textStyle="bold"

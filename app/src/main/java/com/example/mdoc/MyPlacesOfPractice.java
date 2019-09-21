@@ -31,19 +31,9 @@ public class MyPlacesOfPractice extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listviewPOP);
         db = new DBconnection(this);
 
-        final ArrayList<String> thelist = new ArrayList<>();
-        Cursor data = db.viewData();
+        final ArrayList<String> PatientList = new ArrayList<>();
+        Cursor data = db.ViewData();
 
-
-//        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                final int item_no = thelist;
-//
-//                return false;
-//            }
-//        });
 
         if (data.getCount() == 0) {
             Toast.makeText(MyPlacesOfPractice.this, "the database is empty!", Toast.LENGTH_LONG).show();
@@ -51,65 +41,17 @@ public class MyPlacesOfPractice extends AppCompatActivity {
         } else {
 
             while (data.moveToNext()) {
-                thelist.add("Hospital Name: "+data.getString(1)+ "\n"+"Address: "+data.getString(2)
-                + "\n"+"Contact number: "+data.getString(3)+"\n"+ "Date: "+data.getString(4)+ "  "+ "Time:"+data.getString(5));
+                PatientList.add("Hospital Name: "+data.getString(1)+ "\n"+"Address: "+data.getString(2)
+                + "\n"+"Contact number: "+data.getString(3)+"\n"+ "Day: "+data.getString(4)+"\n"+ "Time: "+data.getString(5));
 
 
-                ListAdapter listadapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,thelist);
+                ListAdapter listadapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,PatientList);
                 listView.setAdapter(listadapter);
 
             }
         }
     }
 
-//    public void addPlace(View v){
-//
-//        Intent intent = new Intent(this, AddPlaces.class);
-//        startActivity(intent);
-//    }
-
-//    public void viewPOP(){
-//
-//        if (result.getCount() == 0){
-//            //show message
-//            showMessage("Error!", "Nothing found!");
-//            return;
-//        }
-//
-//        StringBuffer buffer = new StringBuffer();
-//        while (result.moveToNext()){
-//            buffer.append("Hospital Name: "+result.getString(1)+ "\n");
-//            buffer.append("Address of the hospital: "+result.getString(2)+ "\n");
-//            buffer.append("Contact number of the hospital: "+result.getString(3)+ "\n\n");
-//
-//
-//        }
-
-//        SQLiteDatabase sqldb = db.getReadableDatabase();
-//        Cursor cursor = db.viewData(sqldb);
-//
-//        String hospital_name, address, contact_number;
-//
-//        while(cursor.moveToNext()){
-//
-//            hospital_name = cursor.getString(cursor.getColumnIndex(DatabaseContract.Entry.col_2));
-//            address = cursor.getString(cursor.getColumnIndex(DatabaseContract.Entry.col_3));
-//            contact_number = cursor.getString(cursor.getColumnIndex(DatabaseContract.Entry.col_4));
-//
-//            DaoPlaceOfPractice pop = new DaoPlaceOfPractice(hospital_name, address, contact_number);
-
-//            publish
-
-//        }
-//    }
-
-//    public void showMessage(String title, String msg){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//         builder.setCancelable(true);
-//        builder.setTitle(title);
-//        builder.setMessage(msg);
-//        builder.show();
-//    }
 
 
 }
