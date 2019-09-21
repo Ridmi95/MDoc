@@ -156,14 +156,5 @@
             android:text="@string/view_places"
             android:textSize="@dimen/txtsize" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/paddingTop"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_btn_blue"
-            android:text="@string/btnDelete"
-            android:textSize="@dimen/txtsize" />
-
     </LinearLayout>
 </LinearLayout>

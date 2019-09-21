@@ -47,10 +47,6 @@ public class DoctorMainActivity extends AppCompatActivity {
         Spinner sItems1 = findViewById(R.id.spinnerspec);
         sItems1.setAdapter(specadapter);
 
-//        pref = getApplication().getSharedPreferences("doctorPreference",0);
-//        SharedPreferences.Editor editor = pref.edit();
-//        email = pref.getString("doctorEmail",null);
-
         pref = getApplication().getSharedPreferences("userPreference",0);
         SharedPreferences.Editor editor = pref.edit();
         email = pref.getString("userEmail",null);
@@ -75,7 +71,7 @@ public class DoctorMainActivity extends AppCompatActivity {
         txtxphone.setText(String.valueOf(register.getContactnum()));
         txtmedreg.setText(register.getMedicalregno());
         specSpinner.getSelectedItem().toString().trim();
-        
+
 
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,14 +85,19 @@ public class DoctorMainActivity extends AppCompatActivity {
                 register.setMedicalregno(txtmedreg.getText().toString());
                 register.setStatus("Pending");
 
-                if (dbcon.updateDoctor(register) > 0) {
+                if (txtmedreg.length() == 0 || txtemail.length() == 0 || txtlastname.length() == 0|| txtfname.length() == 0|| txtnic.length() == 0 || txtxphone.length() == 0){
+                    Toast.makeText(getApplicationContext(), "Fields cannot be null!", Toast.LENGTH_LONG).show();
+                }
+                else{
+                   if(dbcon.updateDoctor(register) > 0)
+                 {
                     Toast.makeText(getApplicationContext(), "Successfully Updated", Toast.LENGTH_LONG).show();
 
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
 
-                }
+                }}
             }
         });
 
