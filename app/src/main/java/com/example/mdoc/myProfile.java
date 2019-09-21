@@ -128,11 +128,13 @@ public class myProfile extends AppCompatActivity {
                 else {
 
 
+
                         myProfile.setFirstname(myProfile_fristname.getText().toString().trim());
                         myProfile.setLastname(myProfile_lastname.getText().toString().trim());
                         myProfile.setContactnum(Integer.parseInt(myProfile_mobile.getText().toString().trim()));
                         myProfile.setEmail(myProfile_email.getText().toString().trim());
                         myProfile.setNic(myProfile_nic.getText().toString().trim());
+
 
 
 

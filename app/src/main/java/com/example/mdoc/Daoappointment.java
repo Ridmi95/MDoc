@@ -25,6 +25,12 @@ public class Daoappointment {
 
     public Daoappointment() {
     }
+    public Daoappointment(String patientname, String mobile, String prob, String date) {
+        this.patientname = patientname;
+        this.mobile = mobile;
+        this.problems = prob;
+        this.Date = date;
+    }
 
     public String getMobile() {
         return mobile;

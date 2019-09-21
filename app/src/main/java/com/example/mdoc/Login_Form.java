@@ -42,15 +42,16 @@ public class Login_Form extends AppCompatActivity {
                 String upass = password.getText().toString().trim();
                 Log.i("username",uname);
                 Log.i("password",upass);
+
                 if(uname.equals("admin") && upass.equals("admin"))
                 {
-                    Intent intent = new Intent(Login_Form.this,MainNavigationActivity.class);
+                    Intent intent = new Intent(Login_Form.this, MainNavigationActivity.class);
                     startActivity(intent);
 
                 }
 
+                else if (TextUtils.isEmpty(username.getText().toString())) { 
 
-                if (TextUtils.isEmpty(username.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter Username", Toast.LENGTH_LONG);
                     toast.show();
                 } else if (TextUtils.isEmpty(password.getText().toString())) {
@@ -80,6 +81,16 @@ public class Login_Form extends AppCompatActivity {
                             toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(Login_Form.this, DocHomeActivity.class);
+                            SharedPreferences.Editor editor = getSharedPreferences("userPreference", 0).edit();
+                            editor.putString("userEmail", username.getText().toString());
+                            editor.commit();
+                            startActivity(intent);
+
+                        }
+                        else if(reg.getType().equals("Laboratory Technician")){
+                            toast = Toast.makeText(getApplicationContext(), " Successfully login ", Toast.LENGTH_LONG);
+                            toast.show();
+                            Intent intent = new Intent(Login_Form.this, MainLabActivity.class);
                             startActivity(intent);
 
                         }
@@ -137,7 +148,9 @@ public class Login_Form extends AppCompatActivity {
 
 
             }
+
         });
+
     }
 
     public void viewregister(View view) {

@@ -143,6 +143,7 @@
             android:layout_height="37dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="45dp"
+            android:paddingStart="20dp"
             android:hint="@string/specialkey"
             android:background="@drawable/roundededittext"
             />

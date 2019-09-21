@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,6 +22,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class AddPlaces extends AppCompatActivity {
 
@@ -29,8 +32,6 @@ public class AddPlaces extends AppCompatActivity {
     int currentHour;
     int currentMinute;
     String amPm;
-
-//    String[] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
     List<String> days = new ArrayList<>();
 
@@ -115,23 +116,62 @@ public class AddPlaces extends AppCompatActivity {
                 pop.setDate(spinnerdate.getSelectedItem().toString().trim());
                 pop.setTime(time.getText().toString().trim());
 
-                if(edittexthospital.length() == 0 || edittextaddress.length() == 0 ||
+                if (edittexthospital.length() == 0 || edittextaddress.length() == 0 ||
                         edittextcontactnumber.length() == 0 || time.length() == 0 || spinnerdate.getSelectedItem() == "") {
                     Toast.makeText(AddPlaces.this, "Fields cannot be empty!", Toast.LENGTH_LONG).show();
-                }else{
+                }
+                if (!isValidPhone(edittextcontactnumber.getText().toString())) {
+
+                    Toast.makeText(getApplicationContext(), "Phone number is not valid", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
                     if(dbcon.insertData(pop) > 0){
                         Toast.makeText(AddPlaces.this, "Data saved successfully!", Toast.LENGTH_LONG).show();
 
                     }else{
-                       Toast.makeText(AddPlaces.this, "Error!", Toast.LENGTH_LONG).show();
-                       // Toast.makeText(AddPlaces.this, "time is: "+spinnerdate.getSelectedItem().toString().trim(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddPlaces.this, "Error!", Toast.LENGTH_LONG).show();
+
 
                     }
                 }
+
+
             }
         });
 
     }
+
+    private boolean isValidPhone(String phone)
+    {
+        boolean check=false;
+        if(!Pattern.matches("[a-zA-Z]+", phone))
+        {
+            if(phone.length() < 6 || phone.length() > 13)
+            {
+                check = false;
+
+            }
+            else
+            {
+                check = true;
+
+            }
+        }
+        else
+        {
+            check=false;
+        }
+        return check;
+    }
+//
+//    private boolean validateemailadd(String email){
+//        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+//            return false;
+//        }
+//        else
+//            return true;
+//    }
 
     public void myPlaces(View v){
         Intent intent = new Intent(this, MyPlacesOfPractice.class);
