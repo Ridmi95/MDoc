@@ -8,22 +8,13 @@
     android:padding="10sp"
     tools:context=".DocHomeActivity">
 
-    <TextView
-        android:id="@+id/welcomeMsg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/btnpaddingl"
-        android:text="Welcome Dr.Nishiki"
-        android:textAlignment="center"
-        android:textColor="@color/textPrimary"
-        android:textSize="25dp" />
 
     <!--button 1-->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="@dimen/btntop"
+    android:layout_marginTop="@dimen/top"
     android:layout_marginBottom="@dimen/btnbottom">
 
     <ImageView
