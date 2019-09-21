@@ -22,7 +22,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 
-public class LabMainActivity extends AppCompatActivity {
+public class MainLabActivity extends AppCompatActivity {
 
     EditText mEdtName,mEdtAge;
     Button mBtnAdd,mBtnList;
@@ -37,7 +37,7 @@ public class LabMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.lab_activity_main);
 
         mEdtName = findViewById(R.id.edtName);
         mEdtAge = findViewById(R.id.edtAge);
@@ -52,11 +52,11 @@ public class LabMainActivity extends AppCompatActivity {
         //mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS RECORD(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, age VARCHAR, image BLOB)");
 
 
-        mImageView.setOnClickListener(new View.OnClickListener() {
+       mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityCompat.requestPermissions(
-                        LabMainActivity.this,
+                        MainLabActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY
                 );
@@ -75,7 +75,7 @@ public class LabMainActivity extends AppCompatActivity {
 
                             imageViewToByte(mImageView)
                     );
-                    Toast.makeText(LabMainActivity.this, "Added successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainLabActivity.this, "Added successfully", Toast.LENGTH_SHORT).show();
                     //reset views
                     mEdtName.setText("");
                     mEdtAge.setText("");
@@ -92,7 +92,7 @@ public class LabMainActivity extends AppCompatActivity {
         mBtnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LabMainActivity.this, RecordListActivity.class));
+                startActivity(new Intent(MainLabActivity.this, RecordListActivity.class));
 
 
             }

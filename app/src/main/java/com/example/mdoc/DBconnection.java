@@ -28,7 +28,11 @@ public class DBconnection extends SQLiteOpenHelper {
    //     super(context, DATABASE_NAME, null, 2);
 
     public DBconnection(Context context) {
-        super(context, DATABASE_NAME, null, 6);
+
+        super(context, DATABASE_NAME, null, 1);
+
+        //super(context, DATABASE_NAME, null, 6);
+
 
     }
 
@@ -612,6 +616,32 @@ public class DBconnection extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql, null);
     }
+
+
+    //searching the specialization from name
+
+    public List<DaoSpecialization> getSearchedSpecialization(String searchValue)
+    {
+        DaoSpecialization specialization = new DaoSpecialization();
+        SQLiteDatabase sd= getReadableDatabase();
+        String[] projection = {DatabaseContract.Specialization.SPECIALIZATION_NAME,DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT,DatabaseContract.Specialization.SPECIALIZATION_KEY,DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION};
+        Cursor cursor = sd.query(DatabaseContract.Specialization.TABLE_NAME,projection,DatabaseContract.Specialization.SPECIALIZATION_NAME + " LIKE ?",new String[]{searchValue},null,null,null);
+        List<DaoSpecialization> specializationList = new ArrayList<>();
+
+        while(cursor.moveToNext())
+        {
+            String specialName= cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_NAME));
+            String departmentName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT));
+            String specialKey = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_KEY));
+            String specialDesc = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION));
+            //specializationList.add(specialization);
+            DaoSpecialization specialization1 = new DaoSpecialization(Integer.parseInt(specialKey),specialName,departmentName,specialDesc);
+            specializationList.add(specialization1);
+        }
+
+        return specializationList;
+    }
+
 
 
 /*
