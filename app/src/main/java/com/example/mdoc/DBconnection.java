@@ -28,11 +28,17 @@ public class DBconnection extends SQLiteOpenHelper {
    // public DBconnection(Context context) {
    //     super(context, DATABASE_NAME, null, 2);
 
+
+//change the version 4 into 5
     public DBconnection(Context context) {
+
+       // super(context, DATABASE_NAME, null, 5);
+
 
         super(context, DATABASE_NAME, null, 1);
 
         //super(context, DATABASE_NAME, null, 6);
+
 
 
     }
@@ -52,11 +58,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(CREATE_TABLE_POP);
 
-
-       
-
-        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " (" + DatabaseContract.Specialization.SPECIALIZATION_KEY + "INTEGER PRIMARY KEY,"
-
+        String SQL_CREATE_SPECIALIZATION = "CREATE TABLE " + DatabaseContract.Specialization.TABLE_NAME + " ( " + DatabaseContract.Specialization.SPECIALIZATION_KEY + " INTEGER PRIMARY KEY,"
                                             + DatabaseContract.Specialization.SPECIALIZATION_NAME + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DEPARTMENT + " TEXT, "
                                             + DatabaseContract.Specialization.SPECIALIZATION_DESCRIPTION + " TEXT" + ");";
@@ -104,6 +106,7 @@ public class DBconnection extends SQLiteOpenHelper {
                                    +DatabaseContract.Appointment.APPOINTMENT_EMAIL +" TEXT,"
                                    +DatabaseContract.Appointment.APPOINTMENT_MOBILE +" TEXT,"
                                    +DatabaseContract.Appointment.APPOINTMRNT_PROBLEM +" TEXT,"
+                                   +DatabaseContract.Appointment.APPOINTMENT_TIME +" TEXT,"
                                    +DatabaseContract.Appointment.APPOINTMENT_DATE +" TEXT" + ")";
 
         sqLiteDatabase.execSQL(SQL_CREATE_APPOINTMENT);
@@ -188,6 +191,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
+    //////////////////////////////////////add registeration///////////////////////////////////////
     public boolean addregisterInfo(Daoregister register)
     {
         SQLiteDatabase reg = getWritableDatabase();
@@ -233,7 +237,7 @@ public class DBconnection extends SQLiteOpenHelper {
         }
 
     }
-
+ //////////////////////////////////////////////////////add appointment////////////////////////////////////////////
     public  boolean addAppointmentInfo(Daoappointment Appoinment)
     {
 
@@ -308,6 +312,7 @@ public class DBconnection extends SQLiteOpenHelper {
         return result;
     }
 
+    ///////////////////////////////////////////////update profile//////////////////////////////////////////////////////
     public boolean updateProfile(Daoregister register){
         SQLiteDatabase sd = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -589,6 +594,33 @@ public class DBconnection extends SQLiteOpenHelper {
         return pendingDoctorList;
     }
 
+ ////////////////////////search in appointment ///////////////////////////////////////////////////////////////////////////////////////
+//    public List<Daoappointment> search(String keyword){
+//
+//        Daoappointment doc = new Daoappointment();
+//        SQLiteDatabase sql = getReadableDatabase();
+//        String[] projection = {DatabaseContract.Appointment.APPOINTMENT_PATIENTNAME,DatabaseContract.Appointment
+//        .APPOINTMENT_MOBILE, DatabaseContract.Appointment.APPOINTMRNT_PROBLEM,DatabaseContract.Appointment.APPOINTMENT_TIME,
+//        DatabaseContract.Appointment.APPOINTMENT_DATE};
+//        Cursor cursor = sql.query(DatabaseContract.Appointment.TABLE_NAME, projection ,DatabaseContract.Appointment
+//        .APPOINTMENT_DATE + "Like ?",new String[] {keyword},null,null,null);
+//
+//        List<Daoappointment> appointment = new ArrayList<>();
+//
+//        while (cursor.moveToNext()){
+//            String patientname = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Appointment.APPOINTMENT_PATIENTNAME));
+//            String mobile = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Appointment.APPOINTMENT_MOBILE));
+//            String problems = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Appointment.APPOINTMRNT_PROBLEM));
+//            String time = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Appointment.APPOINTMENT_TIME));
+//            String date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.Appointment.APPOINTMENT_DATE));
+//
+//            Daoappointment daoappointment = new Daoappointment(patientname ,mobile,problems,time,date,keyword);
+//            appointment.add(daoappointment);
+//        }
+//         return appointment;
+//    }
+
+    //doctor list
     public List<Daoregister> getAllRegisteredDoctors()
     {
         SQLiteDatabase sd = getWritableDatabase();

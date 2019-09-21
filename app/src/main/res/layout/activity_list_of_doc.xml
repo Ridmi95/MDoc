@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".listOfDoc">
+// add padding 30dp
 
     <TextView
         android:background="@color/colorPrimaryDark"
@@ -21,14 +22,27 @@
         android:paddingTop="@dimen/listtextpaddingtop"
         android:paddingBottom="15dp"/>
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/listimageheight"
         android:padding="@dimen/listimagepadding"
         android:src="@drawable/lab6" />
 
+    <SearchView
+        android:id="@+id/Doclist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Here"
+        android:iconifiedByDefault="false"
+        >
+    </SearchView>
+
+
     <ListView
         android:id="@+id/listodoc"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 

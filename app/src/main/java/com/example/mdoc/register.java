@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class register extends AppCompatActivity {
@@ -24,11 +25,9 @@ public class register extends AppCompatActivity {
     DBconnection dBconnection;
     Spinner registertypespinner;
     Daoregister register = new Daoregister();
-    EditText firstname_register,lastname_register,type_register,email_register,nic_register,mobile_register,password_register,
-    confirmpassword_register;
+    EditText firstname_register, lastname_register, type_register, email_register, nic_register, mobile_register, password_register,
+            confirmpassword_register;
     Button btnregister_register;
-
-
 
 
     @Override
@@ -38,13 +37,12 @@ public class register extends AppCompatActivity {
         //getSupportActionBar().setTitle("Signup");
 
 
-
         dBconnection = new DBconnection(this);
 
         firstname_register = findViewById(R.id.txtrfristname);
         lastname_register = findViewById(R.id.txtrlastname);
         //type_register = findViewById(R.id.txtrtype);
-        registertypespinner =findViewById(R.id.categoryTypespinner);
+        registertypespinner = findViewById(R.id.categoryTypespinner);
         nic_register = findViewById(R.id.txtrnic);
         email_register = findViewById(R.id.txtremail);
         mobile_register = findViewById(R.id.txtrmobile);
@@ -53,12 +51,11 @@ public class register extends AppCompatActivity {
         btnregister_register = findViewById(R.id.btnrregister);
 
 
-
         categoryType.add("Customer");
         categoryType.add("Doctor");
         categoryType.add("Laboratory Technician");
 
-        ArrayAdapter<String> categoryad = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,categoryType);
+        ArrayAdapter<String> categoryad = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categoryType);
 
         categoryad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -74,35 +71,37 @@ public class register extends AppCompatActivity {
             public void onClick(View view) {
 
                 Toast toast;
-                //validating the add specialization
-                if(TextUtils.isEmpty(firstname_register.getText().toString()))
-                {
-                    toast = Toast.makeText(getApplicationContext(),"Enter First Name",Toast.LENGTH_LONG);
-                    toast.show();
-                } else if(TextUtils.isEmpty(lastname_register.getText().toString()))
-                {
-                    toast = Toast.makeText(getApplicationContext(),"Enter Last Name", Toast.LENGTH_LONG);
-                    toast.show();
-                }
-                 else if(TextUtils.isEmpty(nic_register.getText().toString()))
-                {
-                    toast = Toast.makeText(getApplicationContext(),"Enter  nic", Toast.LENGTH_LONG);
-                    toast.show();
-                } else if(TextUtils.isEmpty(email_register.getText().toString()))
-                {
-                    toast = Toast.makeText(getApplicationContext(),"Enter an email", Toast.LENGTH_LONG);
-                    toast.show();
-                }else if(TextUtils.isEmpty(password_register.getText().toString()))
-                {
-                    toast = Toast.makeText(getApplicationContext(),"Enter password", Toast.LENGTH_LONG);
-                    toast.show();
-                }else if(TextUtils.isEmpty(confirmpassword_register.getText().toString()))
-                {
-                    toast = Toast.makeText(getApplicationContext(),"Enter confirm password", Toast.LENGTH_LONG);
-                    toast.show();
-                }
 
-                else {
+                if (TextUtils.isEmpty(firstname_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter First Name", Toast.LENGTH_LONG);
+                    toast.show();
+                } else if (TextUtils.isEmpty(lastname_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter Last Name", Toast.LENGTH_LONG);
+                    toast.show();
+                } else if (TextUtils.isEmpty(nic_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter  nic", Toast.LENGTH_LONG);
+                    toast.show();
+                } else if (TextUtils.isEmpty(email_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter an email", Toast.LENGTH_LONG);
+                    toast.show();
+                } else if (TextUtils.isEmpty(mobile_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter an email", Toast.LENGTH_LONG);
+                    toast.show();
+//                    if (isValidPhone(mobile_register.getText().toString())) {
+//                        Toast.makeText(getApplicationContext(), "Phone number is valid", Toast.LENGTH_SHORT).show();
+//                    } else {
+//
+//                        Toast.makeText(getApplicationContext(), "Phone number is not valid", Toast.LENGTH_SHORT).show();
+//
+//                    }
+
+                } else if (TextUtils.isEmpty(password_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_LONG);
+                    toast.show();
+                } else if (TextUtils.isEmpty(confirmpassword_register.getText().toString())) {
+                    toast = Toast.makeText(getApplicationContext(), "Enter confirm password", Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
 
                     register.setFirstname(firstname_register.getText().toString().trim());
                     register.setLastname(lastname_register.getText().toString().trim());
@@ -111,12 +110,12 @@ public class register extends AppCompatActivity {
                     register.setEmail(email_register.getText().toString().trim());
                     register.setContactnum(Integer.parseInt(mobile_register.getText().toString().trim()));
                     register.setPassword(password_register.getText().toString().trim());
-                    Log.i("Type",registertypespinner.getSelectedItem().toString().trim());
+                    Log.i("Type", registertypespinner.getSelectedItem().toString().trim());
 
                     if (dBconnection.addregisterInfo(register) == true) {
                         toast = Toast.makeText(getApplicationContext(), " Successfully Registered", Toast.LENGTH_LONG);
                         toast.show();
-                        Intent intent = new Intent(register.this,Login_Form.class);
+                        Intent intent = new Intent(register.this, Login_Form.class);
                         startActivity(intent);
 
                     } else {
@@ -133,8 +132,7 @@ public class register extends AppCompatActivity {
         });
 
 
-
-        }
+    }
 
 
     public void register(View view) {
@@ -143,9 +141,42 @@ public class register extends AppCompatActivity {
     }
 
     public void log(View view) {
-        Intent intent = new Intent(register.this,Login_Form.class);
+        Intent intent = new Intent(register.this, Login_Form.class);
         startActivity(intent);
 
     }
-}
+
+
+//    public boolean isValidPhone(CharSequence phone) {
+//        if (TextUtils.isEmpty(phone)) {
+//          return false;
+//        } else
+//
+//        return android.util.Patterns.PHONE.matcher(phone).matches();
+//        }
+
+
+//    private boolean isValidPhone(Daoregister register)
+//    {
+//        boolean check=false;
+//        if(!Pattern.matches("[a-zA-Z]+", register.getContactnum()))
+//        {
+//            if(phone.length() < 6 || phone.length() > 13)
+//            {
+//                check = false;
+//
+//            }
+//            else
+//            {
+//                check = true;
+//
+//            }
+//        }
+//        else
+//        {
+//            check=false;
+//        }
+//        return check;
+    }
+
 

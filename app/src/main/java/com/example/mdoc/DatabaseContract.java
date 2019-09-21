@@ -68,12 +68,14 @@ public final class DatabaseContract {
         public static String APPOINTMENT_EMAIL = "email";
         public static String APPOINTMENT_MOBILE = "mobile";
         public static String APPOINTMRNT_PROBLEM = "problem";
+        public static String APPOINTMENT_TIME = "time";
         public static String APPOINTMENT_DATE = "date";
     }
 
     public static class myProfile implements BaseColumns
     {
         public static String TABLE_NAME ="myProfile";
+        public static String MYPROFILE_IMAGE = "image";
         public static String MYPROFILE_FIRSTNAME = "firstname";
         public static String MYPROFILE_LASTNAME = "lastname";
         public static String MYPROFILE_EMAIL = "email";

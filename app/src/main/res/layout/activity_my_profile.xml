@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".myProfile">
 
 
@@ -35,10 +36,22 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:src="@drawable/person"
+        android:id="@+id/myprofilepic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_image_black_myprofile_24dp"
         android:padding="@dimen/profileimagepadding"/>
+
+    <Button
+        android:id="@+id/Choose_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Image"
+        android:textColor="@color/textPrimary"
+        android:background="@color/colorPrimary"
+
+        />
 
 
     <com.google.android.material.textfield.TextInputLayout
