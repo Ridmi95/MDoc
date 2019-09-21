@@ -510,7 +510,7 @@ public class DBconnection extends SQLiteOpenHelper {
         SQLiteDatabase sd = getWritableDatabase();
         String[] projection = {DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME};
 
-        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,null,null,null,null,null,null);
+        Cursor cursor = sd.query(DatabaseContract.register.TABLE_NAME,projection,DatabaseContract.register.REGISTER_STATUS + " = ?",new String[]{"Pending"},null,null,null,null);
         List<Daoregister> pendingDoctorList = new ArrayList<>();
         while(cursor.moveToNext())
         {
@@ -555,9 +555,12 @@ public class DBconnection extends SQLiteOpenHelper {
         values.put(DatabaseContract.register.REGISTER_STATUS,"Registered");
         //String selection = DatabaseContract.register.REGISTER_FIRSTNAME + " " + DatabaseContract.register.REGISTER_LASTNAME;
         //dinuka perera
-        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_FIRSTNAME + " LIKE " + name +"%",null);
+        long result = sd.update(DatabaseContract.register.TABLE_NAME,values,DatabaseContract.register.REGISTER_FIRSTNAME +" = ? ",new String[] {name});
         return result;
     }
+
+
+
   /*----------------------------------------- LAB REPORT DB -----------------------------------------------------*/
 
 
