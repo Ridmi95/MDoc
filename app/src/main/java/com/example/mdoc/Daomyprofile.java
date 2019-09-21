@@ -1,5 +1,7 @@
 package com.example.mdoc;
 
+import java.sql.Blob;
+
 public class Daomyprofile {
 
     private  String firstname;
@@ -7,8 +9,17 @@ public class Daomyprofile {
     private  String email;
     private  String nic;
     private  int contactnum;
+    private Blob image;
 
     public Daomyprofile() {
+    }
+
+    public Blob getImage() {
+        return image;
+    }
+
+    public void setImage(Blob image) {
+        this.image = image;
     }
 
     public String getFirstname() {

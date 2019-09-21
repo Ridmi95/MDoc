@@ -9,6 +9,20 @@ public class Daoappointment {
     private String problems;
     private String Date;
 
+    public Daoappointment(String patientname, String mobile, String problems, String time, String date, String keyword) {
+    }
+
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    private String Time;
+
     public Daoappointment() {
     }
 

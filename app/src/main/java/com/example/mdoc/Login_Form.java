@@ -69,6 +69,7 @@ public class Login_Form extends AppCompatActivity {
                             toast.show();
                             Intent intent = new Intent(Login_Form.this, MainHome.class);
 
+                            //shared prefreferences
                             Log.i("cdscd", username.getText().toString().trim());
                             SharedPreferences.Editor editor = getSharedPreferences("userPreference", 0).edit();
                             editor.putString("userEmail", username.getText().toString());
