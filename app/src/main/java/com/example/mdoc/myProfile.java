@@ -105,7 +105,7 @@ public class myProfile extends AppCompatActivity {
 
                         myProfile.setFirstname(DatabaseContract.register.REGISTER_FIRSTNAME);
                         myProfile.setLastname(DatabaseContract.register.REGISTER_LASTNAME);
-                        //myProfile.setContactnum(Integer.parseInt(DatabaseContract.register.REGISTER_CONTACTNUM));
+                        myProfile.setContactnum(Integer.parseInt(DatabaseContract.register.REGISTER_CONTACTNUM));
                         myProfile.setEmail(DatabaseContract.register.REGISTER_EMAIL);
 
 

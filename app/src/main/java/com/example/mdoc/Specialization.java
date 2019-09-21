@@ -25,7 +25,7 @@ public class Specialization extends AppCompatActivity {
     private DaoSpecialization specialization = new DaoSpecialization();
     private DBconnection dBconnection;
     private Button addNewSpecialization,viewSpecialization;
-    private String name;
+    private String name,dept;
     private int listPosition;
 
     @Override
@@ -126,6 +126,7 @@ public class Specialization extends AppCompatActivity {
             final DaoSpecialization updateSpecialization = new DaoSpecialization();
             final DaoSpecialization deleteSpecialization = new DaoSpecialization();
             specializationName.setText(name);
+            specialKey.setText(dept);
             addNewSpecialization.setText("UPDATE");
             viewSpecialization.setText("DELETE");
 
@@ -208,6 +209,7 @@ public class Specialization extends AppCompatActivity {
 
         Intent intent = getIntent();
         name = intent.getStringExtra("SpecilizationName");
+        dept = intent.getStringExtra("DepartmentName");
         listPosition = intent.getIntExtra("position",0);
         if(name != null)
         {

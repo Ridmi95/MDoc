@@ -65,7 +65,10 @@ public class AdminViewSpecialization extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(AdminViewSpecialization.this,Specialization.class);
                 String name = (String) spcializationList.getItemAtPosition(i);
+              //  String department = (String) findViewById(R.id.specializationKey).
                 intent.putExtra("SpecilizationName", name);
+             //   intent.putExtra("DepartmentName", department);
+
                 intent.putExtra("position",i);
                 Log.i("position",String.valueOf(i));
 
