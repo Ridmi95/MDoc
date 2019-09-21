@@ -54,8 +54,8 @@ public class PendingFragment extends Fragment {
             String lname = pendindDoctors.get(i).getLastname();
             String docNic = pendindDoctors.get(i).getNic();
             String FullName = fname + " " + lname;
-           // names[i] = FullName;
-            //this.docNic[i] = docNic;
+            names[i] = FullName;
+            this.docNic[i] = docNic;
         }
 
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,names);
