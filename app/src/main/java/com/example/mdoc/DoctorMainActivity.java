@@ -62,7 +62,9 @@ public class DoctorMainActivity extends AppCompatActivity {
         specSpinner = findViewById(R.id.spinnerspec);
         btnupdate = findViewById(R.id.button);
 
-        register = dbcon.getDocDetails(email);
+        //register = dbcon.getDocDetails(email);
+
+        register = dbcon.getProfileDetails(email);
 
         txtnic.setText(register.getNic());
         txtfname.setText(register.getFirstname());
