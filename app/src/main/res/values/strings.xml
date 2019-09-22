@@ -118,7 +118,7 @@
     <string name="Specialization">Specialization</string>
     <string name="search_by_date">search by date</string>
     <string name="search">SEARCH</string>
-
+    <string name="ID">ID:</string>
 
 
 </resources>
