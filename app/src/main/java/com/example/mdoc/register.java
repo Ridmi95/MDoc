@@ -85,15 +85,8 @@ public class register extends AppCompatActivity {
                     toast = Toast.makeText(getApplicationContext(), "Enter an email", Toast.LENGTH_LONG);
                     toast.show();
                 } else if (TextUtils.isEmpty(mobile_register.getText().toString())) {
-                    toast = Toast.makeText(getApplicationContext(), "Enter an email", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), "Enter an mobile Number", Toast.LENGTH_LONG);
                     toast.show();
-//                    if (isValidPhone(mobile_register.getText().toString())) {
-//                        Toast.makeText(getApplicationContext(), "Phone number is valid", Toast.LENGTH_SHORT).show();
-//                    } else {
-//
-//                        Toast.makeText(getApplicationContext(), "Phone number is not valid", Toast.LENGTH_SHORT).show();
-//
-//                    }
 
                 } else if (TextUtils.isEmpty(password_register.getText().toString())) {
                     toast = Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_LONG);
@@ -147,36 +140,6 @@ public class register extends AppCompatActivity {
     }
 
 
-//    public boolean isValidPhone(CharSequence phone) {
-//        if (TextUtils.isEmpty(phone)) {
-//          return false;
-//        } else
-//
-//        return android.util.Patterns.PHONE.matcher(phone).matches();
-//        }
-
-
-//    private boolean isValidPhone(Daoregister register)
-//    {
-//        boolean check=false;
-//        if(!Pattern.matches("[a-zA-Z]+", register.getContactnum()))
-//        {
-//            if(phone.length() < 6 || phone.length() > 13)
-//            {
-//                check = false;
-//
-//            }
-//            else
-//            {
-//                check = true;
-//
-//            }
-//        }
-//        else
-//        {
-//            check=false;
-//        }
-//        return check;
     }
 
 
