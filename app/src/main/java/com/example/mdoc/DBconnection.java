@@ -357,7 +357,12 @@ public class DBconnection extends SQLiteOpenHelper {
     //doctor details
 
 
+    /**
+    public Daoregister getDocDetails(String userEmail)
+=======
+
     /*public Daoregister getDocDetails(String userEmail)
+
     {
         SQLiteDatabase sql = getReadableDatabase();
         String[] projection = {DatabaseContract.register.REGISTER_NIC,DatabaseContract.register.REGISTER_FIRSTNAME,DatabaseContract.register.REGISTER_LASTNAME,DatabaseContract.register.REGISTER_EMAIL,DatabaseContract.register.REGISTER_CONTACTNUM};
@@ -381,7 +386,12 @@ public class DBconnection extends SQLiteOpenHelper {
 
         return userProfile;
 
+
+    }
+**/
+
     }*/
+
 
     //******************************************search patients by date
 
@@ -659,17 +669,23 @@ public class DBconnection extends SQLiteOpenHelper {
 
   /*----------------------------------------- LAB REPORT DB -----------------------------------------------------*/
 
+    public void queryData(String sql){
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+    }
+
+
     //insertData
-    public void insertData(String name, String age, byte[] image){
+    public void insertData(String name, String regID, byte[] image){
         SQLiteDatabase database = getWritableDatabase();
         //query to insert record in database table
-        String sql = "INSERT INTO RECORD VALUES(NULL, ?, ?, ?)";
+        String sql = "INSERT INTO RECORD VALUES (NULL, ?, ?, ?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 
         statement.bindString(1, name);
-        statement.bindString(2, age);
+        statement.bindString(2, regID);
         statement.bindBlob(3, image);
 
 
@@ -677,15 +693,15 @@ public class DBconnection extends SQLiteOpenHelper {
     }
 
     //updateData
-    public void updateData(String name, String age, byte[] image, int id){
+    public void updateData(String name, String regID, byte[] image, int id){
         SQLiteDatabase database = getWritableDatabase();
         //query to update record
-        String sql = "UPDATE RECORD SET name=?, age=?, image=? WHERE id=?";
+        String sql = "UPDATE RECORD SET name=?, regID=?, image=? WHERE id=?";
 
         SQLiteStatement statement = database.compileStatement(sql);
 
         statement.bindString(1, name);
-        statement.bindString(2, age);
+        statement.bindString(2, regID);
 
         statement.bindBlob(3, image);
         statement.bindDouble(4, (double)id);
@@ -713,7 +729,17 @@ public class DBconnection extends SQLiteOpenHelper {
         return database.rawQuery(sql, null);
     }
 
+    public Cursor searchReport (String name) {
 
+        SQLiteDatabase sql = this.getWritableDatabase();
+        Cursor result = sql.rawQuery("SELECT * FROM " + DatabaseContract.lab.TABLE_NAME + " Where " + DatabaseContract.lab.LAB_ID +" Like ?", new String[]{name});
+
+        return result;
+
+    }
+
+
+    /*----------------------------------------------------------------------------------------------*/
 
     //searching the specialization from name
 
