@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+//adapter class
 public class FinalLabReportListAdaptor extends BaseAdapter {
     private Context context;
     private  int layout;
