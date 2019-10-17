@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mdoc">
 
+    <!--for image-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,21 +23,19 @@
         <activity android:name=".view" />
         <activity android:name=".reportMainja" />
         <activity android:name=".DoctorMainActivity" />
+        <activity android:name=".RecordListActivity"/>
         <activity android:name=".DocHomeActivity" />
-        <activity
-            android:name=".MyPatientsActivity"
-            android:label="@string/title_activity_my_patients"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Doc_Patients_list"/>
         <activity
             android:name=".MyPlacesOfPractice"
             android:label="@string/title_activity_my_places_of_practice"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddPlaces" />
-        <activity android:name=".DocProfile" />
         <activity android:name=".QualificationActivity" />
         <activity android:name=".Appoinment" />
         <activity android:name=".Specialization" />
         <activity android:name=".Patient" />
+        <activity android:name=".MainLabActivity"/>
         <activity android:name=".Doctor" />
         <activity
             android:name=".MainNavigationActivity"

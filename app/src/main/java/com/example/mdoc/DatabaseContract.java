@@ -22,20 +22,6 @@ public final class DatabaseContract {
         public static final String col_5 = "Date";
         public static final String col_6 = "Time";
 
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-
-//        public static final String table_name2 = "Doctor";
-//
-//        public static final String col_2_1 = "NIC";
-//        public static final String col_2_2 = "Title";
-//        public static final String col_2_3 = "First_Name";
-//        public static final String col_2_4 = "Last_Name";
-//        public static final String col_2_5 = "Email";
-//        public static final String col_2_6 = "Contact_Number";
-//        public static final String col_2_7 = "RegNo";
     }
     public static class Specialization
     {
@@ -59,6 +45,8 @@ public final class DatabaseContract {
         public static String REGISTER_PASSWORD = "password";
         public static String REGISTER_REGISTRATIONNO = "registrationno";
         public static String REGISTER_STATUS = "status";
+        public static String REGISTER_SPEC = "spec";
+        public static String REGISTER_QUAL = "qual";
 
 
     }
@@ -80,12 +68,14 @@ public final class DatabaseContract {
         public static String APPOINTMENT_EMAIL = "email";
         public static String APPOINTMENT_MOBILE = "mobile";
         public static String APPOINTMRNT_PROBLEM = "problem";
+        public static String APPOINTMENT_TIME = "time";
         public static String APPOINTMENT_DATE = "date";
     }
 
     public static class myProfile implements BaseColumns
     {
         public static String TABLE_NAME ="myProfile";
+        public static String MYPROFILE_IMAGE = "image";
         public static String MYPROFILE_FIRSTNAME = "firstname";
         public static String MYPROFILE_LASTNAME = "lastname";
         public static String MYPROFILE_EMAIL = "email";

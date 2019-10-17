@@ -39,10 +39,10 @@
         android:id="@+id/dtxtnic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/hintTitle"
+        android:layout_marginTop="@dimen/margin_top"
+        android:hint="@string/hint_national_identity_card"
         android:inputType=""
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingTop="@dimen/btnpaddingr"
@@ -56,9 +56,9 @@
         android:ems="10"
         android:hint="@string/hintFName"
         android:inputType=""
-        android:paddingTop="25dp"
         android:paddingLeft="@dimen/paddingLeft"
-        android:paddingRight="@dimen/paddingRight"/>
+        android:paddingTop="25dp"
+        android:paddingRight="@dimen/paddingRight" />
 
     <EditText
         android:id="@+id/dtxtlastname"
@@ -71,6 +71,7 @@
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingTop="25dp"
         android:paddingRight="@dimen/paddingRight" />
+
     <!--email-->
     <EditText
         android:id="@+id/dtxtemail"
@@ -122,8 +123,33 @@
         android:inputType=""
         android:paddingLeft="@dimen/paddingLeft"
         android:paddingRight="@dimen/paddingRight" />
-    <!--pw-->
+    <!--spec-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="none"
+            android:paddingLeft="@dimen/btnpaddingl"
+            android:paddingTop="25dp"
+            android:textSize="@dimen/fab_margin"
+            android:textStyle="bold"
+            android:text="@string/Specialization" />
+
+        <Spinner
+            android:id="@+id/spinnerspec"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintNumber"
+            android:inputType=""
+            android:paddingTop="25dp" />
+    </LinearLayout>
 
 
     <LinearLayout

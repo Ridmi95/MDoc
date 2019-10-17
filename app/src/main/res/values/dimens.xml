@@ -129,7 +129,8 @@
 
     <dimen name="regnic">5dp</dimen>
     <dimen name="regtexts">20dp</dimen>
-
+    <dimen name="margin_top">50dp</dimen>
+    <dimen name="top">100dp</dimen>
 
 
 </resources>

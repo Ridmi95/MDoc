@@ -43,19 +43,19 @@ public class RecordListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_list);
+        setContentView(R.layout.lab_activity_record_list);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Report List");
 
         mListView = findViewById(R.id.listView);
         mList = new ArrayList<>();
-        mAdapter = new RecordListAdapter(this, R.layout.row, mList);
+        mAdapter = new RecordListAdapter(this, R.layout.lab_row, mList);
         mListView.setAdapter(mAdapter);
 
         //get all data from sqlite
         //changed connection
-        Cursor cursor = LabMainActivity.dBconnection.getData("SELECT * FROM RECORD");
+        Cursor cursor = MainLabActivity.dBconnection.getData("SELECT * FROM RECORD");
         mList.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -87,7 +87,7 @@ public class RecordListActivity extends AppCompatActivity {
                         if (i == 0){
                             //update
                             //changed connection
-                            Cursor c = LabMainActivity.dBconnection.getData("SELECT id FROM RECORD");
+                            Cursor c = MainLabActivity.dBconnection.getData("SELECT id FROM RECORD");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -98,7 +98,7 @@ public class RecordListActivity extends AppCompatActivity {
                         if (i==1){
                             //delete
                             //changed connection
-                            Cursor c = LabMainActivity.dBconnection.getData("SELECT id FROM RECORD");
+                            Cursor c = MainLabActivity.dBconnection.getData("SELECT id FROM RECORD");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -124,7 +124,7 @@ public class RecordListActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 try {
                     //changed connection
-                    LabMainActivity.dBconnection.deleteData(idRecord);
+                    MainLabActivity.dBconnection.deleteData(idRecord);
                     Toast.makeText(RecordListActivity.this, "Delete successfully", Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e){
@@ -177,11 +177,11 @@ public class RecordListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     //chaged connection
-                    LabMainActivity.dBconnection.updateData(
+                    MainLabActivity.dBconnection.updateData(
                             edtName.getText().toString().trim(),
                             edtAge.getText().toString().trim(),
 
-                            LabMainActivity.imageViewToByte(imageViewIcon),
+                            MainLabActivity.imageViewToByte(imageViewIcon),
                             position
                     );
                     dialog.dismiss();
@@ -199,7 +199,7 @@ public class RecordListActivity extends AppCompatActivity {
     private void updateRecordList() {
         //get all data from sqlite
         //changed connection
-        Cursor cursor = LabMainActivity.dBconnection.getData("SELECT * FROM RECORD");
+        Cursor cursor = MainLabActivity.dBconnection.getData("SELECT * FROM RECORD");
         mList.clear();
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);

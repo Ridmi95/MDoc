@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Doctor">
+    tools:context=".AdminViewSpecialization">
 
     <LinearLayout
         android:id="@+id/adminheader"
@@ -99,13 +99,54 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+
+        app:layout_goneMarginTop="35dp"
+        android:orientation="horizontal"
+        android:paddingStart="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <EditText
+            android:id="@+id/specializationSearchKey"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/searchlayoutbackground"
+            android:hint="@string/search_specialization"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnSearchSpecialzation"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/search"
+            android:textColor="@color/textIcon"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="356dp"
         android:layout_height="453dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="208dp"
         android:layout_marginEnd="20dp"
-        android:orientation="vertical"
         android:background="@drawable/doctornamelayoutbackground"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,9 +154,9 @@
 
 
         <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/specializationList"
+            android:layout_width="match_parent"
+            android:layout_height="483dp"
 
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
